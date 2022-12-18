@@ -1,3 +1,3 @@
 export type DummyAuthdog = {
-    dummy: string;
-}
+  dummy: string;
+};

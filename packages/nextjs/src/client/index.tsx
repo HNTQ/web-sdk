@@ -1,4 +1,4 @@
-export {}
+export {};
 // import { ClerkProvider as ReactClerkProvider } from '@authdog/authdog-react';
 // // import { IsomorphicClerkOptions } from '@clerk/clerk-react/dist/types';
 // import { useRouter } from 'next/router';

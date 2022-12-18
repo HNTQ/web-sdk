@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node ."
+    "dev": "ts-node .",
+    "test": "jest"
   }
 }

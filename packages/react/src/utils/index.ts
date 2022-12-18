@@ -1,3 +1,2 @@
-
-export * from './inClientSide';
-export * from './isConstructor';
+export * from "./inClientSide";
+export * from "./isConstructor";

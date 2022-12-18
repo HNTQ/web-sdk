@@ -1,3 +1,3 @@
-import type { DummyAuthdog } from '@authdog/types'
+import type { DummyAuthdog } from "@authdog/types";
 
-console.log("Hello world!")
+console.log("Hello world!");
