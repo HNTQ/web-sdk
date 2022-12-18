@@ -1,6 +1,10 @@
 {
   "name": "@authdog/authdog-react",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "source": "src/index.ts",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node ."
+  }
 }
