@@ -1,0 +1,11 @@
+{
+  "name": "@authdog/types",
+  "description": "Types for Authdog",
+  "version": "1.0.0",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  }
+}
