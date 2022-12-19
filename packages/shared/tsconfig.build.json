@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-      "baseUrl": "./",
+      "paths": {
+        "@authdog/types": ["../types"]
+      },
       "declaration": true,
       "declarationMap": false,
       "esModuleInterop": true,
