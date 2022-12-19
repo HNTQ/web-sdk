@@ -1,3 +1,2 @@
-export type DummyAuthdog = {
-    dummy: string;
-};
+export * from "./authdog";
+export * from "./utils";
