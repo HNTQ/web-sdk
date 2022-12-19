@@ -1,5 +1,5 @@
 {
-  "name": "@authdog/react",
+  "name": "@authdog/authdog-react",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "dist/index.js",

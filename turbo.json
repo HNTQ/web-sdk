@@ -5,7 +5,7 @@
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "@authdog/react#build": {
+    "@authdog/authdog-react#build": {
       "dependsOn": ["^build", "@authdog/shared#build"],
       "outputs": ["dist/**", "build/**"]
     },
