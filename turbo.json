@@ -5,6 +5,14 @@
       "dependsOn": ["^build"],
       "outputs": []
     },
+    "@authdog/react#build": {
+      "dependsOn": ["^build", "@authdog/shared#build"],
+      "outputs": ["dist/**", "build/**"]
+    },
+    "@authdog/shared#build": {
+      "dependsOn": ["^build", "@authdog/types#build"],
+      "outputs": ["dist/**", "build/**"]
+    },
     "lint": {
       "outputs": []
     },
