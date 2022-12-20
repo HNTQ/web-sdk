@@ -1,10 +1,24 @@
 // import type {Authdog, AuthdogOptions, ClientResource, LoadedAuthdog, UserResource} from '@authdog/types';
 
+import { Authdog } from "@authdog/types";
+
 // declare global {
 //   interface Window {
 //     __authdog_frontend_api?: string;
 //   }
 // }
+
+
+export interface HeadlessBrowserAuthdog extends Authdog {
+    load: (opts?: any) => Promise<void>;
+    updateClient: (client: any) => void;
+  }
+  
+  export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
+    onComponentsReady: Promise<void>;
+    components: any;
+  }
+
 
 // export interface IsomorphicAuthdogOptions extends AuthdogOptions {
 //   Authdog?: AuthdogProp;

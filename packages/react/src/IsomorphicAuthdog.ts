@@ -1,12 +1,10 @@
+import { BrowserAuthdog, HeadlessBrowserAuthdog } from "./types";
 import { inClientSide } from "./utils";
 
 export class IsomorphicAuthdog {
-  #clientSide: boolean;
+  private mode: 'browser' | 'server';
+  private authdogJs: BrowserAuthdog | HeadlessBrowserAuthdog | null = null;
   constructor() {
-    this.#clientSide = inClientSide();
-  }
-
-  get isClient() {
-    return this.#clientSide;
+    this.mode = inClientSide() ? 'browser' : 'server';
   }
 }
