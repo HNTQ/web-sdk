@@ -6,7 +6,8 @@
 
 # Sample projects
 
-- [withNext](playground/next)
+- [withNextCSR](playground/next13)
+- [withCRA](playground/cra)
 - [withNextSSR](/) - WIP
 - [withRemixCfPages](/) - WIP
 - [withRemixCfWorkers](/) - WIP
