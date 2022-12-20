@@ -7,4 +7,8 @@ export class IsomorphicAuthdog {
   constructor() {
     this.mode = inClientSide() ? 'browser' : 'server';
   }
+
+  get thisMode() {
+    return this.mode;
+  }
 }

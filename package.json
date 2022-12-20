@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "turbo build --filter=@authdog/* --concurrency=${TURBO_CONCURRENCY:-2}",
-    "test": "turbo test --filter=@authdog/* --concurrency=${TURBO_CONCURRENCY:-2}",
+    "test": "turbo test --filter=@authdog/* --filter=!@playground/* --concurrency=${TURBO_CONCURRENCY:-2}",
     "dev": "turbo dev --filter=@authdog/*",
     "dev_next": "turbo dev --filter=@playground/nextjs",
     "dev_cra": "turbo dev --filter=@playground/cra",
