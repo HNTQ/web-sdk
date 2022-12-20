@@ -1,6 +1,9 @@
-import { AuthdogInstanceContext, useAuthdogInstanceContext  } from '@authdog/shared';
+import {
+  AuthdogInstanceContext,
+  useAuthdogInstanceContext
+} from "@authdog/shared";
 
 export const [IsomorphicAuthdogContext, useIsomorphicAuthdogContext] = [
-    AuthdogInstanceContext,
-    useAuthdogInstanceContext
+  AuthdogInstanceContext,
+  useAuthdogInstanceContext
 ];

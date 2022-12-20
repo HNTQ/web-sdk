@@ -1,5 +1,5 @@
 import React from "react";
-import {IsomorphicAuthdogContext} from './IsomorphicAuthdogContext'
+import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
 
 //   import IsomorphicClerk, { NewIsomorphicClerkParams } from '../isomorphicClerk';
 //   import { AuthContext } from './AuthContext';
@@ -10,8 +10,6 @@ import {IsomorphicAuthdogContext} from './IsomorphicAuthdogContext'
 //   import { UserContext } from './UserContext';
 
 type AuthdogContextProvider = {
-  // isomorphicClerkOptions: NewIsomorphicClerkParams;
-  // initialState: InitialState | undefined;
   children: React.ReactNode;
 };
 

@@ -4,7 +4,4 @@ import { createContextAndHook } from "./createContextAndHook";
 const [AuthdogInstanceContext, useAuthdogInstanceContext] =
   createContextAndHook<LoadedAuthdog>("AuthdogInstanceContext");
 
-export {
-  AuthdogInstanceContext,
-  useAuthdogInstanceContext
-};
+export { AuthdogInstanceContext, useAuthdogInstanceContext };

@@ -4,17 +4,22 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "playground/*"
   ],
   "scripts": {
-    "build": "turbo build --concurrency=${TURBO_CONCURRENCY:-2}",
-    "test": "turbo test --concurrency=${TURBO_CONCURRENCY:-2}",
+    "build": "turbo build --filter=@authdog/* --concurrency=${TURBO_CONCURRENCY:-2}",
+    "test": "turbo test --filter=@authdog/* --concurrency=${TURBO_CONCURRENCY:-2}",
     "dev": "turbo dev --filter=@authdog/*",
+    "dev_next": "turbo dev --filter=@playground/nextjs",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
     "@types/jest": "^29.2.4",
+    "babel-loader": "^9.1.0",
+    "babel-preset-es2015": "^6.24.1",
     "eslint-config-custom": "*",
     "jest": "^29.3.1",
     "prettier": "latest",

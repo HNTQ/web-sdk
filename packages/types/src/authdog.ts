@@ -1,5 +1,7 @@
-export interface Authdog {}
-
-export interface LoadedAuthdog extends Authdog {
-  // client: ClientResource;
+export interface Authdog {
+    user: {
+        id: string;
+    }
 }
+
+export interface LoadedAuthdog extends Authdog {}
