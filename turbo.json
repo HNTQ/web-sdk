@@ -15,7 +15,7 @@
       "outputs": ["dist/**", "build/**"]
     },
     "@playground/nextjs": {
-      "dependsOn": ["^build", "@authdog/react#build"]
+      "dependsOn": ["@authdog/react#build"]
     },
     "lint": {
       "outputs": []
