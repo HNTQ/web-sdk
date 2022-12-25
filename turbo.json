@@ -10,12 +10,16 @@
       "dependsOn": ["^build", "@authdog/shared#build"],
       "outputs": ["dist/**", "build/**"]
     },
+    "@authdog/nextjs#build": {
+      "dependsOn": ["^build", "@authdog/authdog-react#build"],
+      "outputs": ["dist/**", "build/**"]
+    },
     "@authdog/shared#build": {
       "dependsOn": ["^build", "@authdog/types#build"],
       "outputs": ["dist/**", "build/**"]
     },
     "@playground/nextjs": {
-      "dependsOn": ["@authdog/react#build"]
+      "dependsOn": ["^build", "@authdog/react#build"]
     },
     "lint": {
       "outputs": []
