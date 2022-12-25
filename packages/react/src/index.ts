@@ -1,2 +1,16 @@
 export * from "./contexts";
 export * from "./utils";
+
+/**
+ * Vite does not define `global` by default
+ * One workaround is to use the `define` config prop
+ * https://vitejs.dev/config/#define
+ * We are solving this in the SDK level to reduce setup steps.
+ */
+if (
+  typeof global === "undefined" &&
+  typeof window !== "undefined" &&
+  !window.global
+) {
+  (window as any).global = window;
+}

@@ -1,0 +1,17 @@
+{
+    "name": "@authdog/nextjs",
+    "version": "1.0.0",
+    "source": "src/index.ts",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "scripts": {
+      "dev": "ts-node .",
+      "test": "jest -c ../../config/jest.config.js",
+      "build": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+      "@types/react": "^18.0.26",
+      "react": "^18.2.0"
+    }
+  }
+  

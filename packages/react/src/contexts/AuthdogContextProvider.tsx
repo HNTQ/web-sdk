@@ -14,7 +14,7 @@ type AuthdogContextProvider = {
 };
 
 type AuthdogContextProviderState = {
-  user: any;
+  user: any | null;
 };
 
 export function AuthdogContextProvider({ children }: any): JSX.Element | null {
@@ -23,27 +23,27 @@ export function AuthdogContextProvider({ children }: any): JSX.Element | null {
 
   const loaded = true;
 
-  const adog = {
-    user: {
-      id: "123",
-      firstName: "John",
-      lastName: "Doe",
-      email: "j@doe.com",
-      emailVerified: true,
-      phoneNumber: "1234567890",
-      phoneNumberVerified: true
-    }
-  };
+  // const adog = {
+  //   user: {
+  //     id: "123",
+  //     firstName: "John",
+  //     lastName: "Doe",
+  //     email: "j@doe.com",
+  //     emailVerified: true,
+  //     phoneNumber: "1234567890",
+  //     phoneNumberVerified: true
+  //   }
+  // };
 
   const [state, setState] = React.useState<AuthdogContextProviderState>({
-    user: adog.user
+    user: null
   });
 
   React.useEffect(() => {
     //   return clerk.addListener(e => setState({ ...e }));
   }, []);
 
-  const authdogCtx = React.useMemo(() => ({ value: adog }), [loaded]);
+  const authdogCtx = React.useMemo(() => ({ value: {} }), [loaded]);
   // const clientCtx = React.useMemo(() => ({ value: state.client }), [state.client]);
 
   // const { sessionId, session, userId, user, organizationId, organization } = derivedState;

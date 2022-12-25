@@ -1,11 +1,11 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { AuthdogContextProvider } from "@authdog/authdog-react";
+import { AuthdogProvider } from '@authdog/nextjs';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AuthdogContextProvider>
+    <AuthdogProvider {...pageProps}>
       <Component {...pageProps} />
-    </AuthdogContextProvider>
+    </AuthdogProvider>
   );
 }

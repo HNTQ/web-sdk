@@ -1,7 +1,5 @@
 export interface Authdog {
-    user: {
-        id: string;
-    }
+  user?: any;
 }
 
 export interface LoadedAuthdog extends Authdog {}

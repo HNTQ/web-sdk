@@ -2,37 +2,35 @@
 
 import { Authdog } from "@authdog/types";
 
-// declare global {
-//   interface Window {
-//     __authdog_frontend_api?: string;
-//   }
-// }
-
+declare global {
+  interface Window {
+    __authdog_frontend_api?: string;
+  }
+}
 
 export interface HeadlessBrowserAuthdog extends Authdog {
-    load: (opts?: any) => Promise<void>;
-    updateClient: (client: any) => void;
-  }
-  
-  export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
-    onComponentsReady: Promise<void>;
-    components: any;
-  }
+  load: (opts?: any) => Promise<void>;
+  updateClient: (client: any) => void;
+}
 
+export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
+  onComponentsReady: Promise<void>;
+  components: any;
+}
 
-// export interface IsomorphicAuthdogOptions extends AuthdogOptions {
-//   Authdog?: AuthdogProp;
-//   authdogJSUrl?: string;
-//   authdogJSVariant?: 'headless' | '';
-// }
+export interface IsomorphicAuthdogOptions extends AuthdogOptions {
+  Authdog?: AuthdogProp;
+  authdogJSUrl?: string;
+  authdogJSVariant?: 'headless' | '';
+}
 
-// export interface BrowserAuthdogConstructor {
-//   new (frontendApi: string): BrowserAuthdog;
-// }
+export interface BrowserAuthdogConstructor {
+  new (frontendApi: string): BrowserAuthdog;
+}
 
-// export interface HeadlessBrowserAuthdogConstrutor {
-//   new (frontendApi: string): HeadlessBrowserAuthdog;
-// }
+export interface HeadlessBrowserAuthdogConstrutor {
+  new (frontendApi: string): HeadlessBrowserAuthdog;
+}
 
 // export type WithAuthdogProp<T> = T & { authdog: LoadedAuthdog };
 
@@ -46,23 +44,27 @@ export interface HeadlessBrowserAuthdog extends Authdog {
 //   props?: any;
 // }
 
-// export interface HeadlessBrowserAuthdog extends Authdog {
-//   load: (opts?: AuthdogOptions) => Promise<void>;
-//   updateClient: (client: ClientResource) => void;
-// }
+// TODO: use types from @authdog/types
+type AuthdogOptions = any;
+type ClientResource = any;
 
-// export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
-//   onComponentsReady: Promise<void>;
-//   components: any;
-// }
+export interface HeadlessBrowserAuthdog extends Authdog {
+  load: (opts?: AuthdogOptions) => Promise<void>;
+  updateClient: (client: ClientResource) => void;
+}
 
-// export type AuthdogProp =
-//   | BrowserAuthdogConstructor
-//   | BrowserAuthdog
-//   | HeadlessBrowserAuthdog
-//   | HeadlessBrowserAuthdogConstrutor
-//   | undefined
-//   | null;
+export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
+  onComponentsReady: Promise<void>;
+  components: any;
+}
+
+export type AuthdogProp =
+  | BrowserAuthdogConstructor
+  | BrowserAuthdog
+  | HeadlessBrowserAuthdog
+  | HeadlessBrowserAuthdogConstrutor
+  | undefined
+  | null;
 
 // // type ButtonProps = {
 // //   afterSignInUrl?: string;
