@@ -1,1 +1,1 @@
-export {AuthdogProvider} from './client'
+export { AuthdogProvider } from "./client";

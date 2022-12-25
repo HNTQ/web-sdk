@@ -1,11 +1,11 @@
 // import { InitialState } from '@clerk/types';
-import React from 'react';
+import React from "react";
 
-import { multipleAuthdogProvidersError } from '../errors';
-import type { IsomorphicAuthdogOptions } from '../types';
-import { withMaxAllowedInstancesGuard } from '../utils';
-import { AuthdogContextProvider } from './AuthdogContextProvider';
-import { StructureContext, StructureContextStates } from './StructureContext';
+import { multipleAuthdogProvidersError } from "../errors";
+import type { IsomorphicAuthdogOptions } from "../types";
+import { withMaxAllowedInstancesGuard } from "../utils";
+import { AuthdogContextProvider } from "./AuthdogContextProvider";
+import { StructureContext, StructureContextStates } from "./StructureContext";
 
 type InitialState = any;
 
@@ -16,13 +16,21 @@ export interface AuthdogProviderProps extends IsomorphicAuthdogOptions {
 }
 
 function AuthdogProviderBase({
-  initialState, children, Authdog, frontendApi, ...options
+  initialState,
+  children,
+  Authdog,
+  frontendApi,
+  ...options
 }: AuthdogProviderProps): JSX.Element {
   return (
     <StructureContext.Provider value={StructureContextStates.noGuarantees}>
       <AuthdogContextProvider
         initialState={initialState}
-        IsomorphicAuthdogOptions={{ frontendApi: frontendApi || '', Authdog, options }}
+        IsomorphicAuthdogOptions={{
+          frontendApi: frontendApi || "",
+          Authdog,
+          options
+        }}
       >
         {children}
       </AuthdogContextProvider>
@@ -30,8 +38,12 @@ function AuthdogProviderBase({
   );
 }
 
-const AuthdogProvider = withMaxAllowedInstancesGuard(AuthdogProviderBase, 'AuthdogProvider', multipleAuthdogProvidersError);
+const AuthdogProvider = withMaxAllowedInstancesGuard(
+  AuthdogProviderBase,
+  "AuthdogProvider",
+  multipleAuthdogProvidersError
+);
 
-AuthdogProvider.displayName = 'AuthdogProvider';
+AuthdogProvider.displayName = "AuthdogProvider";
 
 export { AuthdogProvider };

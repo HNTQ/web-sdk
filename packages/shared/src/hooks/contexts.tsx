@@ -1,7 +1,7 @@
-import { LoadedAuthdog } from "@authdog/types";
+// import { LoadedAuthdog } from "@authdog/types";
 import { createContextAndHook } from "./createContextAndHook";
 
 const [AuthdogInstanceContext, useAuthdogInstanceContext] =
-  createContextAndHook<LoadedAuthdog>("AuthdogInstanceContext");
+  createContextAndHook<any>("AuthdogInstanceContext");
 
 export { AuthdogInstanceContext, useAuthdogInstanceContext };

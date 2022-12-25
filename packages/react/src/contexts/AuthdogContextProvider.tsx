@@ -1,4 +1,6 @@
 import React from "react";
+import { IsomorphicAuthdog } from "../IsomorphicAuthdog";
+import { AuthContext } from "./AuthContext";
 import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
 
 //   import IsomorphicClerk, { NewIsomorphicClerkParams } from '../isomorphicClerk';
@@ -17,23 +19,11 @@ type AuthdogContextProviderState = {
   user: any | null;
 };
 
-export function AuthdogContextProvider({ children }: any): JSX.Element | null {
-  // const { isomorphicClerkOptions, initialState, children } = props;
-  // const { isomorphicClerk: adog, loaded: clerkLoaded } = useLoadedIsomorphicClerk(isomorphicClerkOptions);
+export function AuthdogContextProvider(props: any): JSX.Element | null {
+  const { isomorphicAuthdogOptions, initialState, children } = props;
 
-  const loaded = true;
-
-  // const adog = {
-  //   user: {
-  //     id: "123",
-  //     firstName: "John",
-  //     lastName: "Doe",
-  //     email: "j@doe.com",
-  //     emailVerified: true,
-  //     phoneNumber: "1234567890",
-  //     phoneNumberVerified: true
-  //   }
-  // };
+  const { isomorphicAuthdog: authdog, loaded: authdogLoaded } =
+    useLoadedIsomorphicAuthdog(isomorphicAuthdogOptions);
 
   const [state, setState] = React.useState<AuthdogContextProviderState>({
     user: null
@@ -43,66 +33,50 @@ export function AuthdogContextProvider({ children }: any): JSX.Element | null {
     //   return clerk.addListener(e => setState({ ...e }));
   }, []);
 
-  const authdogCtx = React.useMemo(() => ({ value: {} }), [loaded]);
-  // const clientCtx = React.useMemo(() => ({ value: state.client }), [state.client]);
+  const authdogCtx = React.useMemo(() => ({ value: authdog }), [authdogLoaded]);
 
-  // const { sessionId, session, userId, user, organizationId, organization } = derivedState;
-  // const actor = session?.actor || null;
-  // const organizationMembership = organization
-  //   ? session?.user.organizationMemberships.find(m => m.organization.id === organizationId)
-  //   : organization;
-  // const orgId = organizationId;
-  // const orgRole = organizationMembership ? organizationMembership.role : organizationMembership;
-  // const orgSlug = organizationMembership ? organizationMembership.organization.slug : organizationMembership;
+  const user = {
+    id: "123"
+  };
 
-  // const authCtx = React.useMemo(
-  //   () => ({
-  //     value: { sessionId, userId, actor, orgId, orgRole, orgSlug },
-  //   }),
-  //   [sessionId, userId, actor, orgId, orgRole, orgSlug],
-  // );
-  // const userCtx = React.useMemo(() => ({ value: user }), [userId, user]);
-  // const sessionCtx = React.useMemo(() => ({ value: session }), [sessionId, session]);
-  // const organizationCtx = React.useMemo(() => {
-  //   return {
-  //     value: {
-  //       organization: derivedState.organization,
-  //       lastOrganizationInvitation: derivedState.lastOrganizationInvitation,
-  //       lastOrganizationMember: derivedState.lastOrganizationMember,
-  //     },
-  //   };
-  // }, [
-  //   derivedState.organizationId,
-  //   derivedState.organization,
-  //   derivedState.lastOrganizationInvitation,
-  //   derivedState.lastOrganizationMember,
-  // ]);
+  const authCtx = React.useMemo(
+    () => ({
+      value: { user }
+    }),
+    []
+  );
 
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
-      {children}
+      <AuthContext.Provider value={authCtx}>{children}</AuthContext.Provider>
     </IsomorphicAuthdogContext.Provider>
   );
 }
 
-// const useLoadedIsomorphicClerk = (options: NewIsomorphicClerkParams) => {
-//   const [loaded, setLoaded] = React.useState(false);
-//   const isomorphicClerk = React.useMemo(() => IsomorphicClerk.getOrCreateInstance(options), []);
+const useLoadedIsomorphicAuthdog = (
+  options: any
+  //NewIsomorphicClerkParams
+) => {
+  const [loaded, setLoaded] = React.useState(false);
+  const isomorphicAuthdog = React.useMemo(
+    () => IsomorphicAuthdog.getOrCreateInstance(options),
+    []
+  );
 
-//   React.useEffect(() => {
-//     isomorphicClerk.__unstable__updateProps({ appearance: options.options.appearance });
-//   }, [options.options.appearance]);
+  // React.useEffect(() => {
+  //   isomorphicAuthdog.__unstable__updateProps({ appearance: options.options.appearance });
+  // }, [options.options.appearance]);
 
-//   React.useEffect(() => {
-//     isomorphicClerk.__unstable__updateProps({ options: options.options });
-//   }, [options.options.localization]);
+  // React.useEffect(() => {
+  //   isomorphicAuthdog.__unstable__updateProps({ options: options.options });
+  // }, [options.options.localization]);
 
-//   React.useEffect(() => {
-//     isomorphicClerk.addOnLoaded(() => setLoaded(true));
-//   }, []);
+  React.useEffect(() => {
+    isomorphicAuthdog.addOnLoaded(() => setLoaded(true));
+  }, []);
 
-//   return { isomorphicClerk, loaded };
-// };
+  return { isomorphicAuthdog, loaded };
+};
 
 // // This should be provided from isomorphicClerk
 // // TODO: move inside isomorphicClerk

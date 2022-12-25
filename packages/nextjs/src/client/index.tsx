@@ -1,4 +1,3 @@
-
 import { AuthdogProvider as ReactAuthdogProvider } from "@authdog/authdog-react";
 // import { IsomorphicClerkOptions } from '@authdog/authdog-react/dist/types';
 import { useRouter } from "next/router";
@@ -42,7 +41,9 @@ export function AuthdogProvider({
       navigate={(to: string) => push(to)}
       // withServerSideAuth automatically injects __clerk_ssr_state
       // getAuth returns a user-facing authServerSideProps that hides __clerk_ssr_state
-      initialState={authServerSideProps?.__authdog_ssr_state || __authdog_ssr_state}
+      initialState={
+        authServerSideProps?.__authdog_ssr_state || __authdog_ssr_state
+      }
       {...restProps}
     >
       {children}
