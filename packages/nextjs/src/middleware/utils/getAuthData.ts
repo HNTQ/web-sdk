@@ -12,7 +12,7 @@ export async function getAuthData(
   opts: WithServerSideAuthOptions = {}
 ): Promise<AuthData | null> {
   const { headers, cookies } = ctx.req;
-  const { loadSession, loadUser, loadOrg, jwtKey, authorizedParties } = opts;
+  const { loadSession, loadUser, loadOrg, authorizedParties } = opts;
 
   try {
     const cookieToken = cookies["__session"];
@@ -72,7 +72,7 @@ export async function getAuthData(
       // getToken,
       // claims: sessionClaims
       user: {
-        id: "123"
+        id: "2c811154-f500-427a-8039-f192494ed89b"
       }
     };
   } catch (err) {

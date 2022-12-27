@@ -14,7 +14,7 @@ export type WithServerSideAuthOptions = {
   loadUser?: boolean;
   loadSession?: boolean;
   loadOrg?: boolean;
-  jwtKey?: string;
+  // jwtKey?: string;
   authorizedParties?: string[];
 };
 

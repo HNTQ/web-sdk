@@ -1,4 +1,5 @@
-// export const noFrontendApiError = 'Clerk: You must add the frontendApi prop to your <ClerkProvider>';
+export const noFrontendApiError =
+  "Authdog: You must add the frontendApi prop to your <AuthdogProvider>";
 
 export const noAuthdogProviderError =
   "Authdog: You must wrap your application in a <AuthdogProvider> component.";

@@ -10,7 +10,7 @@ const NO_FRONTEND_API_ERR =
 
 type NextAuthdogProviderProps = {
   children: React.ReactNode;
-  frontendApi?: string;
+  frontendApi: string;
 } & any; // IsomorphicClerkOptions;
 
 export function AuthdogProvider({
@@ -28,9 +28,11 @@ export function AuthdogProvider({
   const { push } = useRouter();
 
   // TODO
-  // if (frontendApi == undefined && !process.env.NEXT_PUBLIC_AUTHDOG_FRONTEND_API) {
+  // if (frontendApi === undefined && !process.env.NEXT_PUBLIC_AUTHDOG_FRONTEND_API) {
   //   throw Error(NO_FRONTEND_API_ERR);
   // }
+
+  console.log(frontendApi)
 
   ReactAuthdogProvider.displayName = "ReactAuthdogProvider";
 

@@ -19,31 +19,39 @@ type AuthdogContextProviderState = {
   user: any | null;
 };
 
-export function AuthdogContextProvider(props: any): JSX.Element | null {
-  const { isomorphicAuthdogOptions, initialState, children } = props;
-
+export function AuthdogContextProvider(props: {
+  children: React.ReactNode;
+  isomorphicAuthdogOptions: any;
+  initialState?: any;
+}): JSX.Element | null {
+  const { isomorphicAuthdogOptions, initialState, children } = props; 
   const { isomorphicAuthdog: authdog, loaded: authdogLoaded } =
     useLoadedIsomorphicAuthdog(isomorphicAuthdogOptions);
 
+  console.log("AuthdogContextProvider", authdogLoaded, authdog)
+
+
   const [state, setState] = React.useState<AuthdogContextProviderState>({
-    user: null
+    // client: clerk.client as ClientResource,
+    // session: clerk.session,
+    // @ts-ignore
+    user: authdog.user
+    // organization: clerk.organization,
+    // lastOrganizationInvitation: null,
+    // lastOrganizationMember: null,
   });
 
   React.useEffect(() => {
-    //   return clerk.addListener(e => setState({ ...e }));
+    return authdog.addListener((e) => setState({ ...e }));
   }, []);
 
+  console.log("context provider", authdog)
+
+
   const authdogCtx = React.useMemo(() => ({ value: authdog }), [authdogLoaded]);
-
-  const user = {
-    id: "123"
-  };
-
   const authCtx = React.useMemo(
-    () => ({
-      value: { user }
-    }),
-    []
+    () => ({ value: { user: state.user } }),
+    [state.user]
   );
 
   return (
@@ -55,7 +63,7 @@ export function AuthdogContextProvider(props: any): JSX.Element | null {
 
 const useLoadedIsomorphicAuthdog = (
   options: any
-  //NewIsomorphicClerkParams
+  //NewIsomorphicAuthdogParams
 ) => {
   const [loaded, setLoaded] = React.useState(false);
   const isomorphicAuthdog = React.useMemo(
@@ -77,25 +85,3 @@ const useLoadedIsomorphicAuthdog = (
 
   return { isomorphicAuthdog, loaded };
 };
-
-// // This should be provided from isomorphicClerk
-// // TODO: move inside isomorphicClerk
-// function deriveState(
-//   clerkLoaded: boolean,
-//   state: ClerkContextProviderState,
-//   initialState: InitialState | undefined,
-// ): {
-//   userId: string | null | undefined;
-//   sessionId: string | null | undefined;
-//   organizationId: string | null | undefined;
-//   session: ActiveSessionResource | null | undefined;
-//   user: UserResource | null | undefined;
-//   organization: OrganizationResource | null | undefined;
-//   lastOrganizationInvitation: OrganizationInvitationResource | null | undefined;
-//   lastOrganizationMember: OrganizationMembershipResource | null | undefined;
-// } {
-//   if (!clerkLoaded && initialState) {
-
-//   }
-
-// }

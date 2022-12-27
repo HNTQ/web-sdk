@@ -4,7 +4,9 @@ import { AuthdogProvider } from "@authdog/nextjs";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AuthdogProvider {...pageProps}>
+    <AuthdogProvider
+      frontendApi={"http://localhost:3000/api/authdog"}    
+    {...pageProps}>
       <Component {...pageProps} />
     </AuthdogProvider>
   );

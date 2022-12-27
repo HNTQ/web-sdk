@@ -22,11 +22,12 @@ function AuthdogProviderBase({
   frontendApi,
   ...options
 }: AuthdogProviderProps): JSX.Element {
+
   return (
     <StructureContext.Provider value={StructureContextStates.noGuarantees}>
       <AuthdogContextProvider
         initialState={initialState}
-        IsomorphicAuthdogOptions={{
+        isomorphicAuthdogOptions={{
           frontendApi: frontendApi || "",
           Authdog,
           options

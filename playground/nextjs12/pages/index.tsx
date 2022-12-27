@@ -1,11 +1,12 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import { useIsomorphicAuthdogContext } from "@authdog/authdog-react";
 
 export default function Home(props: any) {
-  // const ctx = useIsomorphicAuthdogContext();
+  const ctx = useIsomorphicAuthdogContext();
+
+  console.log(ctx);
 
   return (
     <div className={styles.container}>
