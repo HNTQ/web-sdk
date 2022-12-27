@@ -5,10 +5,11 @@ import {
   IsomorphicAuthdogOptions
 } from "./types";
 import { inClientSide } from "./utils";
-import { noFrontendApiError } from "./errors";
+import { noauthnApiError } from "./errors";
+import { ClientResource } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
-  frontendApi: string;
+  authnApi: string;
   options: IsomorphicAuthdogOptions;
   Authdog: AuthdogProp | null;
 };
@@ -20,7 +21,7 @@ type MethodCallback = () => void;
 
 export class IsomorphicAuthdog {
   private mode: "browser" | "server";
-  private frontendApi: string;
+  private authnApi: string;
   private options: IsomorphicAuthdogOptions;
   private Authdog: AuthdogProp;
   private authdogJs: BrowserAuthdog | HeadlessBrowserAuthdog | null = null;
@@ -32,6 +33,8 @@ export class IsomorphicAuthdog {
   static #instance: IsomorphicAuthdog;
 
   #loaded = false;
+  session: any;
+  user: any;
 
   get loaded(): boolean {
     return this.#loaded;
@@ -48,9 +51,9 @@ export class IsomorphicAuthdog {
   }
 
   constructor(params: NewIsomorphicAuthdogParams) {
-    const { Authdog = null, frontendApi, options = {} } = params || {};
+    const { Authdog = null, authnApi, options = {} } = params || {};
 
-    this.frontendApi = frontendApi;
+    this.authnApi = authnApi;
     this.options = options;
     this.Authdog = Authdog;
     this.mode = inClientSide() ? "browser" : "server";
@@ -83,14 +86,14 @@ export class IsomorphicAuthdog {
       return;
     }
 
-    if (!this.frontendApi) {
-      this.throwError(noFrontendApiError);
+    if (!this.authnApi) {
+      this.throwError(noauthnApiError);
     }
 
     // For more information refer to:
     // - https://github.com/remix-run/remix/issues/2947
     // - https://github.com/facebook/react/issues/24430
-    window.__authdog_frontend_api = this.frontendApi;
+    window.__authdog_frontend_api = this.authnApi;
 
     return;
   }
@@ -105,4 +108,17 @@ export class IsomorphicAuthdog {
     }
     throw new Error(errorMsg);
   }
+
+
+  get client(): ClientResource | undefined {
+    if (this.authdogJs) {
+      // TODO: extend type
+      // @ts-ignore
+      return this.authdogJs.client;
+      // TODO: add ssr condition
+    } else {
+      return undefined;
+    }
+  }
+
 }

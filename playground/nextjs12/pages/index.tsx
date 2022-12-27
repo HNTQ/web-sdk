@@ -3,6 +3,10 @@ import styles from "../styles/Home.module.css";
 
 import { useIsomorphicAuthdogContext } from "@authdog/authdog-react";
 
+// TODO
+// @ts-ignore
+import { withServerSideAuth } from '@authdog/nextjs/api'
+
 export default function Home(props: any) {
   const ctx = useIsomorphicAuthdogContext();
 
@@ -21,13 +25,15 @@ export default function Home(props: any) {
   );
 }
 
-export const getServerSideProps = async (context: any) => {
-  // console.log(context);
-  // get user from request
+// export const getServerSideProps = async (context: any) => {
+//   // console.log(context);
+//   // get user from request
 
-  return {
-    props: {
-      hello: "Authdog"
-    } // will be passed to the page component as props
-  };
-};
+//   return {
+//     props: {
+//       hello: "Authdog"
+//     } // will be passed to the page component as props
+//   };
+// };
+
+// export const getServerSideProps = withServerSideAuth({ loadUser: true});

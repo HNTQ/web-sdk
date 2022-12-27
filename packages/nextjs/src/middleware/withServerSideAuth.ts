@@ -41,6 +41,9 @@ export const withServerSideAuth: WithServerSideAuth = (
 
   return async (ctx: GetServerSidePropsContext) => {
     const authData = await getAuthData(ctx, opts);
+
+    console.log(authData);
+
     if (!authData) {
       return EMPTY_GSSP_RESPONSE;
     }

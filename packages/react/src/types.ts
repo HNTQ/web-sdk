@@ -25,11 +25,11 @@ export interface IsomorphicAuthdogOptions extends AuthdogOptions {
 }
 
 export interface BrowserAuthdogConstructor {
-  new (frontendApi: string): BrowserAuthdog;
+  new (authnApi: string): BrowserAuthdog;
 }
 
 export interface HeadlessBrowserAuthdogConstrutor {
-  new (frontendApi: string): HeadlessBrowserAuthdog;
+  new (authnApi: string): HeadlessBrowserAuthdog;
 }
 
 // export type WithAuthdogProp<T> = T & { authdog: LoadedAuthdog };

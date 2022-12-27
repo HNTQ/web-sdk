@@ -1,7 +1,31 @@
-// import { LoadedAuthdog } from "@authdog/types";
+import {
+  LoadedAuthdog,
+  ActiveSessionResource,
+  ClientResource,
+  UserResource
+} from "@authdog/types";
 import { createContextAndHook } from "./createContextAndHook";
 
 const [AuthdogInstanceContext, useAuthdogInstanceContext] =
-  createContextAndHook<any>("AuthdogInstanceContext");
+  createContextAndHook<LoadedAuthdog>("AuthdogInstanceContext");
 
-export { AuthdogInstanceContext, useAuthdogInstanceContext };
+const [UserContext, useUserContext] = createContextAndHook<
+  UserResource | null | undefined
+>("UserContext");
+const [ClientContext, useClientContext] = createContextAndHook<
+  ClientResource | null | undefined
+>("ClientContext");
+const [SessionContext, useSessionContext] = createContextAndHook<
+  ActiveSessionResource | null | undefined
+>("SessionContext");
+
+export {
+  AuthdogInstanceContext,
+  useAuthdogInstanceContext,
+  UserContext,
+  useUserContext,
+  ClientContext,
+  useClientContext,
+  SessionContext,
+  useSessionContext
+};
