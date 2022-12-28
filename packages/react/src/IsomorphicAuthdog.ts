@@ -1,10 +1,12 @@
 import {
   AuthdogProp,
   BrowserAuthdog,
+  BrowserAuthdogConstructor,
   HeadlessBrowserAuthdog,
+  HeadlessBrowserAuthdogConstrutor,
   IsomorphicAuthdogOptions
 } from "./types";
-import { inClientSide } from "./utils";
+import { inClientSide, isConstructor } from "./utils";
 import { noauthnApiError } from "./errors";
 import { ClientResource } from "@authdog/types";
 
@@ -93,7 +95,30 @@ export class IsomorphicAuthdog {
     // For more information refer to:
     // - https://github.com/remix-run/remix/issues/2947
     // - https://github.com/facebook/react/issues/24430
-    window.__authdog_frontend_api = this.authnApi;
+    window.__authdog_authn_api = this.authnApi;
+
+
+    if (this.Authdog) {
+      // Set a fixed Authdog version
+      let dog: AuthdogProp;
+
+      if (isConstructor<BrowserAuthdogConstructor | HeadlessBrowserAuthdogConstrutor>(this.Authdog)) {
+        // Construct a new Clerk object if a constructor is passed
+        dog = new this.Authdog(this.authnApi);
+        await dog.load(this.options);
+      } else {
+        // Otherwise use the instantiated Authdog object
+        dog = this.Authdog;
+
+        // if (!dog.isReady()) {
+        //   await dog.load(this.options);
+        // }
+      }
+
+      // @ts-ignore
+      global.Authdog = dog;
+
+    }
 
     return;
   }
@@ -103,12 +128,11 @@ export class IsomorphicAuthdog {
   // development mode. However, in production throwing an error results in an infinite loop
   // as shown at https://github.com/vercel/next.js/issues/6973
   throwError(errorMsg: string): void {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       console.error(errorMsg);
     }
     throw new Error(errorMsg);
   }
-
 
   get client(): ClientResource | undefined {
     if (this.authdogJs) {

@@ -4,7 +4,7 @@ import { Authdog } from "@authdog/types";
 
 declare global {
   interface Window {
-    __authdog_frontend_api?: string;
+    __authdog_authn_api?: string;
   }
 }
 
