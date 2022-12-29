@@ -6,10 +6,7 @@ module.exports = {
   ],
   transform: {
     '^.+\\.(ts|tsx)?$': [
-      'ts-jest',
-      {
-        tsConfig: '<rootDir>/tsconfig.base.json',
-      },
+      'ts-jest'
     ],
   },
   testMatch: [

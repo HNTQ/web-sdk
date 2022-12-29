@@ -32,7 +32,8 @@
       "cache": false
     },
     "test": {
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "cache": false
     }
   }
 }
