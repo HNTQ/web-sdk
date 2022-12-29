@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node .",
-    "test": "jest -c ../../config/jest.config.js",
+    "test": "jest -c ../../jest.config.js",
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {
