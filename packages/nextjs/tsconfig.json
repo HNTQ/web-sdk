@@ -1,6 +1,6 @@
 {
-    "extends": "./tsconfig.build.json",
-    "compilerOptions": {
-      "incremental": true
-    }
+  "extends": "./tsconfig.build.json",
+  "compilerOptions": {
+    "incremental": true
   }
+}

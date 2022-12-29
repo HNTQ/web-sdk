@@ -4,6 +4,6 @@ export type AuthdogResourceReloadParams = {
 
 export interface AuthdogResource {
   readonly id?: string | undefined;
-//   pathRoot: string;
+  //   pathRoot: string;
   //reload(p?: AuthdogResourceReloadParams): Promise<this>;
 }

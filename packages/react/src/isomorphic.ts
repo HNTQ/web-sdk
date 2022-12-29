@@ -1,43 +1,21 @@
-import {
-  AuthdogProp,
-  BrowserAuthdog,
-  BrowserAuthdogConstructor,
-  HeadlessBrowserAuthdog,
-  HeadlessBrowserAuthdogConstrutor,
-  IsomorphicAuthdogOptions
-} from "./types";
-import { inClientSide, isConstructor } from "./utils";
-import { noauthnApiError } from "./errors";
-import { ClientResource, IAuthdog } from "@authdog/types";
+import { BrowserAuthdog, HeadlessBrowserAuthdog } from "./types";
+import { inClientSide } from "./utils";
+import { ClientResource, AuthdogInstance } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
-  options: IsomorphicAuthdogOptions;
-  AuthdogClient: AuthdogProp | null;
 };
 
-type MethodName<T> = {
-  [P in keyof T]: T[P] extends Function ? P : never;
-}[keyof T];
-type MethodCallback = () => void;
-
-export class IsomorphicAuthdog implements IAuthdog {
+export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
-  // private options: IsomorphicAuthdogOptions;
-  private AuthdogClient: AuthdogProp;
-  private authdogJs: BrowserAuthdog | HeadlessBrowserAuthdog | null = null;
-  // private premountMethodCalls = new Map<
-  //   MethodName<BrowserAuthdog>,
-  //   MethodCallback
-  // >();
+  private authdogInstance: AuthdogInstance | null = null;
 
   static #instance: IsomorphicAuthdog;
 
   #loaded = false;
   session: any;
   user: any;
-  // client: ClientResource | undefined;
 
   get loaded(): boolean {
     return this.#loaded;
@@ -53,15 +31,16 @@ export class IsomorphicAuthdog implements IAuthdog {
     return this.#instance;
   }
 
-  constructor(params: NewIsomorphicAuthdogParams) {
-    const { AuthdogClient = null, authnApi, options = {} } = params || {};
-
+  constructor({ authnApi }: NewIsomorphicAuthdogParams) {
     this.authnApi = authnApi;
-    // this.options = options;
-    this.AuthdogClient = AuthdogClient; // initialize Authdog object
     this.mode = inClientSide() ? "browser" : "server";
 
-    void this.loadAuthdogJS();
+    if (this.mode === "browser") {
+      void this.authenticateBrowserParty();
+    } else {
+      // TODO
+      // void this.authenticateServerParty();
+    }
   }
   client!: ClientResource;
   value?: any;
@@ -74,6 +53,13 @@ export class IsomorphicAuthdog implements IAuthdog {
     return this.mode;
   }
 
+  /*
+   * This method is used to get the Authdog authentication endpoint.
+   */
+  get thisAuthnApi() {
+    return this.authnApi;
+  }
+
   // TODO: implement logic
   addListener = (_: (emission: any) => void): void => {
     // const callback = () => this.authdogJs?.addListener(listener);
@@ -84,48 +70,18 @@ export class IsomorphicAuthdog implements IAuthdog {
     // }
   };
 
-  async loadAuthdogJS(): Promise<
+  async authenticateBrowserParty(): Promise<
     HeadlessBrowserAuthdog | BrowserAuthdog | undefined
   > {
     if (this.mode !== "browser" || this.#loaded) {
       return;
     }
 
-    if (!this.authnApi) {
-      this.throwError(noauthnApiError);
-    }
+    // TODO: check if domain is Authdog dev domain
+    // if so: extract token from URI
+    // else: read cookies, extract token from Cookies
 
-    // For more information refer to:
-    // - https://github.com/remix-run/remix/issues/2947
-    // - https://github.com/facebook/react/issues/24430
-    window.__authdog_authn_api = this.authnApi;
-
-
-    if (this.AuthdogClient) {
-      // Set a fixed Authdog version
-      let dog: AuthdogProp;
-
-      if (isConstructor<BrowserAuthdogConstructor | HeadlessBrowserAuthdogConstrutor>(this.AuthdogClient)) {
-        // Construct a new Clerk object if a constructor is passed
-        dog = new this.AuthdogClient(this.authnApi);
-        // await dog.init();
-        // await dog.load(this.options);
-        await dog.load();
-      } 
-      // else {
-      //   // Otherwise use the instantiated Authdog object
-      //   dog = this.Authdog;
-
-      //   // if (!dog.isReady()) {
-      //   //   await dog.load(this.options);
-      //   // }
-      // }
-
-      // @ts-ignore
-      global.Authdog = dog;
-
-    }
-
+    this.#loaded = true;
     return;
   }
 
@@ -134,21 +90,10 @@ export class IsomorphicAuthdog implements IAuthdog {
   // development mode. However, in production throwing an error results in an infinite loop
   // as shown at https://github.com/vercel/next.js/issues/6973
   throwError(errorMsg: string): void {
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       console.error(errorMsg);
+    } else {
+      throw new Error(errorMsg);
     }
-    throw new Error(errorMsg);
   }
-
-  // get client(): ClientResource | undefined {
-  //   if (this.authdogJs) {
-  //     // TODO: extend type
-  //     // @ts-ignore
-  //     return this.authdogJs.client;
-  //     // TODO: add ssr condition
-  //   } else {
-  //     return undefined;
-  //   }
-  // }
-
 }

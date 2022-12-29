@@ -5,22 +5,9 @@ import { AuthContext } from "./AuthContext";
 
 import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
 
-
-import { ClientContext } from './ClientContext';
-import { SessionContext } from './SessionContext';
-import { UserContext } from './UserContext';
-
-// import {IAuthdog} from "@authdog/types"
-
-// import { SessionContext } from "./SessionContext";
-
-//   import IsomorphicClerk, { NewIsomorphicClerkParams } from '../isomorphicClerk';
-//   import { AuthContext } from './AuthContext';
-//   import { ClientContext } from './ClientContext';
-//   import { IsomorphicClerkContext } from './IsomorphicClerkContext';
-//   import { OrganizationContext } from './OrganizationContext';
-//   import { SessionContext } from './SessionContext';
-//   import { UserContext } from './UserContext';
+import { ClientContext } from "./ClientContext";
+import { SessionContext } from "./SessionContext";
+import { UserContext } from "./UserContext";
 
 type AuthdogContextProvider = {
   children: React.ReactNode;
@@ -44,10 +31,7 @@ export function AuthdogContextProvider(props: {
   const [state, setState] = React.useState<AuthdogContextProviderState>({
     client: authdog.client as ClientResource,
     session: authdog.session,
-    user: authdog.user,
-    // organization: clerk.organization,
-    // lastOrganizationInvitation: null,
-    // lastOrganizationMember: null,
+    user: authdog.user
   });
 
   React.useEffect(() => {
@@ -60,7 +44,10 @@ export function AuthdogContextProvider(props: {
     [state.user]
   );
 
-  const clientCtx = React.useMemo(() => ({ value: state.client }), [state.client]);
+  const clientCtx = React.useMemo(
+    () => ({ value: state.client }),
+    [state.client]
+  );
   const derivedState = deriveState(authdogLoaded, state, initialState);
 
   const userCtx = React.useMemo(() => {
@@ -73,13 +60,13 @@ export function AuthdogContextProvider(props: {
 
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
-      <ClientContext.Provider value={clientCtx}>
-        <SessionContext.Provider value={sessionCtx}>
-          <AuthContext.Provider value={authCtx}>
-            <UserContext.Provider value={userCtx}>{children}</UserContext.Provider>
-          </AuthContext.Provider>
-        </SessionContext.Provider>
-      </ClientContext.Provider>
+      {/* <ClientContext.Provider value={clientCtx}> */}
+      {/* <SessionContext.Provider value={sessionCtx}> */}
+      <AuthContext.Provider value={authCtx}>
+        <UserContext.Provider value={userCtx}>{children}</UserContext.Provider>
+      </AuthContext.Provider>
+      {/* </SessionContext.Provider> */}
+      {/* </ClientContext.Provider> */}
     </IsomorphicAuthdogContext.Provider>
   );
 }
@@ -106,11 +93,16 @@ const deriveState = (_loaded: boolean, _state: any, _initialState: any) => {
   //   return initialState;
   // }
 
-  return { sessionId: "03ea0a25-fa9d-45e3-9b7e-9e099d252e6e", session: {
-    id: "f9fafc7a-d131-49bb-9e82-73764792c37d",
-  }, userId: "f9fafc7a-d131-49bb-9e82-73764792c37d", user: {
-    id: "310bfb80-464b-4356-b742-b4d9fa959c19",
-    pathRoot: "",
-    reload: null,
-  }};
+  return {
+    sessionId: "03ea0a25-fa9d-45e3-9b7e-9e099d252e6e",
+    session: {
+      id: "f9fafc7a-d131-49bb-9e82-73764792c37d"
+    },
+    userId: "f9fafc7a-d131-49bb-9e82-73764792c37d",
+    user: {
+      id: "310bfb80-464b-4356-b742-b4d9fa959c19",
+      pathRoot: "",
+      reload: null
+    }
+  };
 };

@@ -1,1 +1,3 @@
-export {AuthdogClient} from './core/AuthdogClient';
+// export { AuthdogClient } from "./core/AuthdogClient";
+
+export {};

@@ -1,12 +1,12 @@
 module.exports = {
     moduleFileExtensions: ["ts", "tsx", "js"],
     transform: {
-      "^.+\\.(ts|tsx)?$": ['ts-jest', {tsconfig: "tsconfig.json"}]
+      "^.+\\.(ts|tsx)?$": ['ts-jest', { "tsConfig": "tsconfig.base.json" }]
     },
     testMatch: ["**/test/**/*.test.(ts|js)", "**/**/*.test.(ts|js)"],
     testPathIgnorePatterns: ["/node_modules/", "build"],
     testEnvironment: "node",
-    rootDir: "..",
+    rootDir: ".",
     collectCoverageFrom: [
       "!<rootDir>/src",
     ]

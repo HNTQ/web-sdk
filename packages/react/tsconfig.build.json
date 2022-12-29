@@ -22,10 +22,6 @@
     "strict": true,
     "target": "ES2017"
   },
-  "include": [
-    "src/index.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts"
-  ],
-  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+  "exclude": ["node_modules", "**/*.test.ts"],
+  "include": ["src"]
 }

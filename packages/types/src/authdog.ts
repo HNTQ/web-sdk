@@ -1,10 +1,9 @@
-import { ClientResource } from "./client";
+//import { ClientResource } from "./client";
 
-export interface IAuthdog {
-  /** Client handling most Clerk operations. */
-  client?: ClientResource;
-}
+// export class IAuthdog {
+//   /** Client handling most Authdog operations. */
+//   //client?: ClientResource;
 
-// export interface LoadedAuthdog extends IAuthdog {
-//   client: ClientResource;
 // }
+
+export interface AuthdogInstance {}

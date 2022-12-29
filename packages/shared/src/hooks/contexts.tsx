@@ -1,5 +1,5 @@
 import {
-  IAuthdog,
+  AuthdogInstance,
   ActiveSessionResource,
   ClientResource,
   UserResource
@@ -7,7 +7,7 @@ import {
 import { createContextAndHook } from "./createContextAndHook";
 
 const [AuthdogInstanceContext, useAuthdogInstanceContext] =
-  createContextAndHook<IAuthdog>("AuthdogInstanceContext");
+  createContextAndHook<AuthdogInstance>("AuthdogInstanceContext");
 
 const [UserContext, useUserContext] = createContextAndHook<
   UserResource | null | undefined

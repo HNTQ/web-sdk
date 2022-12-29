@@ -1,6 +1,24 @@
-export * from "./authdog";
-export * from "./client";
-export * from "./resource";
-export * from "./utils";
-export * from "./user";
-export * from "./session";
+export { AuthdogInstance } from "./authdog";
+export { ClientResource } from "./client";
+export { AuthdogResource, AuthdogResourceReloadParams } from "./resource";
+export {
+  CamelToSnake,
+  DeepCamelToSnake,
+  DeepPartial,
+  DeepRequired,
+  DeepSnakeToCamel,
+  PathValue,
+  RecordToPath,
+  SnakeToCamel
+} from "./utils";
+export { UserResource } from "./user";
+export {
+  SessionResource,
+  ActiveSessionResource,
+  GetToken,
+  GetTokenOptions,
+  PublicUserData,
+  SessionActivity,
+  SessionStatus,
+  SessionWithActivitiesResource
+} from "./session";

@@ -5,25 +5,25 @@ import { AuthdogResource } from "./resource";
 
 export interface SessionResource extends AuthdogResource {
   id: string;
-//   status: SessionStatus;
-//   expireAt: Date;
-//   abandonAt: Date;
-//   //   lastActiveToken: TokenResource | null;
-//   lastActiveOrganizationId: string | null;
-//   //   actor: ActJWTClaim | null;
-//   user: UserResource | null;
-//   publicUserData: PublicUserData;
-//   end: () => Promise<SessionResource>;
-//   remove: () => Promise<SessionResource>;
-//   touch: () => Promise<SessionResource>;
-//   getToken: GetToken;
-//   createdAt: Date;
-//   updatedAt: Date;
+  //   status: SessionStatus;
+  //   expireAt: Date;
+  //   abandonAt: Date;
+  //   //   lastActiveToken: TokenResource | null;
+  //   lastActiveOrganizationId: string | null;
+  //   //   actor: ActJWTClaim | null;
+  //   user: UserResource | null;
+  //   publicUserData: PublicUserData;
+  //   end: () => Promise<SessionResource>;
+  //   remove: () => Promise<SessionResource>;
+  //   touch: () => Promise<SessionResource>;
+  //   getToken: GetToken;
+  //   createdAt: Date;
+  //   updatedAt: Date;
 }
 
 export interface ActiveSessionResource extends SessionResource {
-//   status: "active";
-//   user: UserResource;
+  //   status: "active";
+  //   user: UserResource;
 }
 
 export interface SessionWithActivitiesResource extends AuthdogResource {

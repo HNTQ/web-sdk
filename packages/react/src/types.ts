@@ -1,6 +1,4 @@
-// import type {Authdog, AuthdogOptions, ClientResource, LoadedAuthdog, UserResource} from '@authdog/types';
-
-import { IAuthdog } from "@authdog/types";
+import { AuthdogInstance } from "@authdog/types";
 
 declare global {
   interface Window {
@@ -8,7 +6,7 @@ declare global {
   }
 }
 
-export interface HeadlessBrowserAuthdog extends IAuthdog {
+export interface HeadlessBrowserAuthdog extends AuthdogInstance {
   load: (opts?: any) => Promise<void>;
   updateClient: (client: any) => void;
 }
@@ -20,8 +18,6 @@ export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
 
 export interface IsomorphicAuthdogOptions extends AuthdogOptions {
   Authdog?: AuthdogProp;
-  // authdogJSUrl?: string;
-  authdogJSVariant?: "headless" | "";
 }
 
 export interface BrowserAuthdogConstructor {
@@ -48,35 +44,20 @@ export interface HeadlessBrowserAuthdogConstrutor {
 type AuthdogOptions = any;
 type ClientResource = any;
 
-export interface HeadlessBrowserAuthdog extends IAuthdog {
-  load: (opts?: AuthdogOptions) => Promise<void>;
-  updateClient: (client: ClientResource) => void;
+export interface HeadlessBrowserAuthdog extends AuthdogInstance {
+  // load: (opts?: AuthdogOptions) => Promise<void>;
+  // updateClient: (client: ClientResource) => void;
 }
 
 export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
-  onComponentsReady: Promise<void>;
-  components: any;
+  // onComponentsReady: Promise<void>;
+  // components: any;
 }
 
 export type AuthdogProp =
-  | BrowserAuthdogConstructor
   | BrowserAuthdog
+  | BrowserAuthdogConstructor
   | HeadlessBrowserAuthdog
   | HeadlessBrowserAuthdogConstrutor
   | undefined
   | null;
-
-// // type ButtonProps = {
-// //   afterSignInUrl?: string;
-// //   afterSignUpUrl?: string;
-// //   redirectUrl?: string;
-// //   mode?: 'redirect' | 'modal';
-// //   children?: React.ReactNode;
-// // };
-
-// // export type SignInButtonProps = ButtonProps;
-// // export type SignUpButtonProps = ButtonProps;
-
-// // export type SignInWithMetamaskButtonProps = Pick<ButtonProps, 'redirectUrl' | 'children'>;
-
-// // export type RedirectToProps = RedirectOptions;
