@@ -8,7 +8,7 @@ import {
 } from "./types";
 import { inClientSide, isConstructor } from "./utils";
 import { noauthnApiError } from "./errors";
-import { ClientResource } from "@authdog/types";
+import { ClientResource, IAuthdog } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
@@ -21,7 +21,7 @@ type MethodName<T> = {
 }[keyof T];
 type MethodCallback = () => void;
 
-export class IsomorphicAuthdog {
+export class IsomorphicAuthdog implements IAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
   // private options: IsomorphicAuthdogOptions;
@@ -37,6 +37,7 @@ export class IsomorphicAuthdog {
   #loaded = false;
   session: any;
   user: any;
+  // client: ClientResource | undefined;
 
   get loaded(): boolean {
     return this.#loaded;
@@ -62,6 +63,8 @@ export class IsomorphicAuthdog {
 
     void this.loadAuthdogJS();
   }
+  client!: ClientResource;
+  value?: any;
 
   public addOnLoaded = (_: () => void) => {
     // this.loadedListeners.push(cb);
@@ -137,15 +140,15 @@ export class IsomorphicAuthdog {
     throw new Error(errorMsg);
   }
 
-  get client(): ClientResource | undefined {
-    if (this.authdogJs) {
-      // TODO: extend type
-      // @ts-ignore
-      return this.authdogJs.client;
-      // TODO: add ssr condition
-    } else {
-      return undefined;
-    }
-  }
+  // get client(): ClientResource | undefined {
+  //   if (this.authdogJs) {
+  //     // TODO: extend type
+  //     // @ts-ignore
+  //     return this.authdogJs.client;
+  //     // TODO: add ssr condition
+  //   } else {
+  //     return undefined;
+  //   }
+  // }
 
 }

@@ -10,6 +10,8 @@ import { ClientContext } from './ClientContext';
 import { SessionContext } from './SessionContext';
 import { UserContext } from './UserContext';
 
+// import {IAuthdog} from "@authdog/types"
+
 // import { SessionContext } from "./SessionContext";
 
 //   import IsomorphicClerk, { NewIsomorphicClerkParams } from '../isomorphicClerk';
@@ -78,8 +80,6 @@ export function AuthdogContextProvider(props: {
           </AuthContext.Provider>
         </SessionContext.Provider>
       </ClientContext.Provider>
-
-
     </IsomorphicAuthdogContext.Provider>
   );
 }
@@ -93,14 +93,6 @@ const useLoadedIsomorphicAuthdog = (
     () => IsomorphicAuthdog.getOrCreateInstance(options),
     []
   );
-
-  // React.useEffect(() => {
-  //   isomorphicAuthdog.__unstable__updateProps({ appearance: options.options.appearance });
-  // }, [options.options.appearance]);
-
-  // React.useEffect(() => {
-  //   isomorphicAuthdog.__unstable__updateProps({ options: options.options });
-  // }, [options.options.localization]);
 
   React.useEffect(() => {
     isomorphicAuthdog.addOnLoaded(() => setLoaded(true));
