@@ -3,7 +3,7 @@
 import { useAuthContext } from "../contexts/AuthContext";
 import { useIsomorphicAuthdogContext } from "../contexts/IsomorphicAuthdogContext";
 import { invalidStateError } from "../errors";
-import { IsomorphicAuthdog } from "../IsomorphicAuthdog";
+import { IsomorphicAuthdog } from "../isomorphic";
 // import { createGetToken, createSignOut } from './utils';
 
 // type UseAuthReturn =

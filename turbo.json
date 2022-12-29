@@ -18,6 +18,10 @@
       "dependsOn": ["^build", "@authdog/types#build"],
       "outputs": ["dist/**", "build/**"]
     },
+    "@authdog/types#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", "build/**"]
+    },
     "@playground/nextjs": {
       "dependsOn": ["^build", "@authdog/react#build"]
     },

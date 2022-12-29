@@ -24,6 +24,10 @@
         "@authdog/authdog-react": ["../react"]
       },
     },
-    "include": ["src"],
+    "include": [
+      "src/index.ts",
+      "src/**/*.ts",
+      "src/**/*.d.ts"
+    ],
     "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
   }

@@ -13,7 +13,7 @@ import { ClientResource } from "@authdog/types";
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
   options: IsomorphicAuthdogOptions;
-  Authdog: AuthdogProp | null;
+  AuthdogClient: AuthdogProp | null;
 };
 
 type MethodName<T> = {
@@ -25,7 +25,7 @@ export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
   private options: IsomorphicAuthdogOptions;
-  private Authdog: AuthdogProp;
+  private AuthdogClient: AuthdogProp;
   private authdogJs: BrowserAuthdog | HeadlessBrowserAuthdog | null = null;
   private premountMethodCalls = new Map<
     MethodName<BrowserAuthdog>,
@@ -53,11 +53,11 @@ export class IsomorphicAuthdog {
   }
 
   constructor(params: NewIsomorphicAuthdogParams) {
-    const { Authdog = null, authnApi, options = {} } = params || {};
+    const { AuthdogClient = null, authnApi, options = {} } = params || {};
 
     this.authnApi = authnApi;
     this.options = options;
-    this.Authdog = Authdog;
+    this.AuthdogClient = AuthdogClient; // initialize Authdog object
     this.mode = inClientSide() ? "browser" : "server";
 
     void this.loadAuthdogJS();
@@ -98,22 +98,25 @@ export class IsomorphicAuthdog {
     window.__authdog_authn_api = this.authnApi;
 
 
-    if (this.Authdog) {
+    if (this.AuthdogClient) {
       // Set a fixed Authdog version
       let dog: AuthdogProp;
 
-      if (isConstructor<BrowserAuthdogConstructor | HeadlessBrowserAuthdogConstrutor>(this.Authdog)) {
+      if (isConstructor<BrowserAuthdogConstructor | HeadlessBrowserAuthdogConstrutor>(this.AuthdogClient)) {
         // Construct a new Clerk object if a constructor is passed
-        dog = new this.Authdog(this.authnApi);
-        await dog.load(this.options);
-      } else {
-        // Otherwise use the instantiated Authdog object
-        dog = this.Authdog;
+        dog = new this.AuthdogClient(this.authnApi);
+        // await dog.init();
+        // await dog.load(this.options);
+        await dog.load();
+      } 
+      // else {
+      //   // Otherwise use the instantiated Authdog object
+      //   dog = this.Authdog;
 
-        // if (!dog.isReady()) {
-        //   await dog.load(this.options);
-        // }
-      }
+      //   // if (!dog.isReady()) {
+      //   //   await dog.load(this.options);
+      //   // }
+      // }
 
       // @ts-ignore
       global.Authdog = dog;

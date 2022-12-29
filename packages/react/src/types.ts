@@ -20,7 +20,7 @@ export interface BrowserAuthdog extends HeadlessBrowserAuthdog {
 
 export interface IsomorphicAuthdogOptions extends AuthdogOptions {
   Authdog?: AuthdogProp;
-  authdogJSUrl?: string;
+  // authdogJSUrl?: string;
   authdogJSVariant?: "headless" | "";
 }
 

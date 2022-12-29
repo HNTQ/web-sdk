@@ -1,28 +1,30 @@
 {
-    "compilerOptions": {
-      "declaration": true,
-      "declarationMap": false,
-      "esModuleInterop": true,
-      "importHelpers": true,
-      "jsx": "react",
-      "lib": ["es6", "dom"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "noImplicitReturns": true,
-      "noUnusedLocals": false,
-      "noUnusedParameters": true,
-      "outDir": "dist",
-      "resolveJsonModule": true,
-      "skipLibCheck": true,
-      "sourceMap": false,
-      "strict": true,
-      "target": "ES2017",
-      "rootDir": "src",                                   /* Specify the root folder within your source files. */
-      "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
-      "paths": {
-        "@authdog/shared": ["../shared"]
-      },
+  "compilerOptions": {
+    "paths": {
+      "@authdog/types": ["../types"]
     },
-    "include": ["src"],
-    "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
-  }
+    "declaration": true,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitReturns": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
+    "strict": true,
+    "target": "ES2017"
+  },
+  "include": [
+    "src/index.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ],
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
+}

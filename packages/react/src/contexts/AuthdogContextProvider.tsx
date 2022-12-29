@@ -1,6 +1,6 @@
 import { ClientResource } from "@authdog/types";
 import React from "react";
-import { IsomorphicAuthdog } from "../IsomorphicAuthdog";
+import { IsomorphicAuthdog } from "../isomorphic";
 import { AuthContext } from "./AuthContext";
 
 import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
