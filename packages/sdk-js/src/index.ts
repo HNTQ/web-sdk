@@ -1,0 +1,1 @@
+export {AuthdogClient} from './core/AuthdogClient';

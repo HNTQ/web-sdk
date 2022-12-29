@@ -24,13 +24,13 @@ type MethodCallback = () => void;
 export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
-  private options: IsomorphicAuthdogOptions;
+  // private options: IsomorphicAuthdogOptions;
   private AuthdogClient: AuthdogProp;
   private authdogJs: BrowserAuthdog | HeadlessBrowserAuthdog | null = null;
-  private premountMethodCalls = new Map<
-    MethodName<BrowserAuthdog>,
-    MethodCallback
-  >();
+  // private premountMethodCalls = new Map<
+  //   MethodName<BrowserAuthdog>,
+  //   MethodCallback
+  // >();
 
   static #instance: IsomorphicAuthdog;
 
@@ -56,7 +56,7 @@ export class IsomorphicAuthdog {
     const { AuthdogClient = null, authnApi, options = {} } = params || {};
 
     this.authnApi = authnApi;
-    this.options = options;
+    // this.options = options;
     this.AuthdogClient = AuthdogClient; // initialize Authdog object
     this.mode = inClientSide() ? "browser" : "server";
 

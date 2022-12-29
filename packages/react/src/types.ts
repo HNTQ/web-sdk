@@ -1,6 +1,6 @@
 // import type {Authdog, AuthdogOptions, ClientResource, LoadedAuthdog, UserResource} from '@authdog/types';
 
-import { Authdog } from "@authdog/types";
+import { IAuthdog } from "@authdog/types";
 
 declare global {
   interface Window {
@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export interface HeadlessBrowserAuthdog extends Authdog {
+export interface HeadlessBrowserAuthdog extends IAuthdog {
   load: (opts?: any) => Promise<void>;
   updateClient: (client: any) => void;
 }
@@ -48,7 +48,7 @@ export interface HeadlessBrowserAuthdogConstrutor {
 type AuthdogOptions = any;
 type ClientResource = any;
 
-export interface HeadlessBrowserAuthdog extends Authdog {
+export interface HeadlessBrowserAuthdog extends IAuthdog {
   load: (opts?: AuthdogOptions) => Promise<void>;
   updateClient: (client: ClientResource) => void;
 }

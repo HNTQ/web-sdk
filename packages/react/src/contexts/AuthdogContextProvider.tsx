@@ -70,7 +70,6 @@ export function AuthdogContextProvider(props: {
   }, [derivedState.sessionId, derivedState.session]);
 
   return (
-    // @ts-expect-error : TODO fix type authdogCtx
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
       <ClientContext.Provider value={clientCtx}>
         <SessionContext.Provider value={sessionCtx}>

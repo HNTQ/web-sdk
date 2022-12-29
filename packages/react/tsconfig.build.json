@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@authdog/types": ["../types"]
+      "@authdog/types": ["../types"],
+      "@authdog/shared": ["../shared"]
     },
     "declaration": true,
     "declarationMap": false,
