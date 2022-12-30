@@ -1,4 +1,4 @@
-# Authdog Web Monorepo
+# Authdog Web SDK
 
 [![.github/workflows/adog-js-ci.yml](https://github.com/authdog/web-oss/actions/workflows/adog-js-ci.yml/badge.svg)](https://github.com/authdog/web-oss/actions/workflows/adog-js-ci.yml)
 
