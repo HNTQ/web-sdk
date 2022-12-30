@@ -27,7 +27,11 @@ export const getSessionCookie = (name: string) => {
 export const deleteSessionFromCookies = (domain: string) => {
   var d = new Date();
   d.setTime(d.getTime());
-  var expires = "expires=" + d.toUTCString();
-  document.cookie =
-    c.SESSION_ID + "=" + "" + `;domain=${domain};path=/;` + expires;
+  var sessionIdBlock = `${c.SDK_SESSION_ID}=`;
+  var domainBlock = `domain=${domain}`;
+  var pathBlock = "path=/";
+  var expiresBlock = "expires=" + d.toUTCString();
+  document.cookie = [sessionIdBlock, domainBlock, pathBlock, expiresBlock].join(
+    ";"
+  );
 };

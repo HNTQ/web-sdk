@@ -17,7 +17,7 @@ export default function Home(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* {JSON.stringify(ctx)} */}
-      Hello
+      <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">Signin</a>
     </div>
   );
 }

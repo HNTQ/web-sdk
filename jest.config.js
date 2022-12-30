@@ -9,6 +9,13 @@ module.exports = {
       'ts-jest'
     ],
   },
+  modulePaths: [
+    "<rootDir>",
+    "packages/sdk-browser",
+  ],
+  moduleNameMapper: {
+    '^@authdog/(.*)$': '<rootDir>/packages/$1/src',
+  },
   testMatch: [
     '**/**/*.test.(ts|js)',
     '**/test/**/*.test.(ts|js)',

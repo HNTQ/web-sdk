@@ -19,6 +19,7 @@
       "@authdog/authdog-react": ["../../packages/react"],
       "@authdog/nextjs": ["../../packages/nextjs"],
       "@authdog/nextjs/api": ["../../packages/nextjs/api"],
+      "@authdog/sdk-browser": ["../../packages/sdk-browser"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

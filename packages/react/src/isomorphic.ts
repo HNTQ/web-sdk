@@ -1,20 +1,20 @@
 import { BrowserAuthdog, HeadlessBrowserAuthdog } from "./types";
 import { inClientSide } from "./utils";
-import { ClientResource, AuthdogInstance } from "@authdog/types";
+import {fetchUserInfos, getParamFromUri, getSessionCredentials} from '@authdog/sdk-browser';
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
+  signinUri: string;
 };
 
 export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
-  private authdogInstance: AuthdogInstance | null = null;
+  private signinUri: string;
 
   static #instance: IsomorphicAuthdog;
 
   #loaded = false;
-  session: any;
   user: any;
 
   get loaded(): boolean {
@@ -22,17 +22,16 @@ export class IsomorphicAuthdog {
   }
 
   static getOrCreateInstance(params: NewIsomorphicAuthdogParams) {
-    // During SSR: a new instance should be created for every request
-    // During CSR: use the cached instance for the whole lifetime of the app
-    // This method should be idempotent in both scenarios
     if (!inClientSide() || !this.#instance) {
       this.#instance = new IsomorphicAuthdog(params);
     }
     return this.#instance;
   }
 
-  constructor({ authnApi }: NewIsomorphicAuthdogParams) {
+  constructor({ authnApi, signinUri }: NewIsomorphicAuthdogParams) {
     this.authnApi = authnApi;
+    this.signinUri = signinUri;
+
     this.mode = inClientSide() ? "browser" : "server";
 
     if (this.mode === "browser") {
@@ -42,9 +41,9 @@ export class IsomorphicAuthdog {
       // void this.authenticateServerParty();
     }
   }
-  client!: ClientResource;
   value?: any;
 
+  // TODO: check if useful
   public addOnLoaded = (_: () => void) => {
     // this.loadedListeners.push(cb);
   };
@@ -53,31 +52,39 @@ export class IsomorphicAuthdog {
     return this.mode;
   }
 
-  /*
-   * This method is used to get the Authdog authentication endpoint.
-   */
   get thisAuthnApi() {
     return this.authnApi;
   }
 
-  // TODO: implement logic
-  addListener = (_: (emission: any) => void): void => {
-    // const callback = () => this.authdogJs?.addListener(listener);
-    // if (this.authdogJs) {
-    //   callback();
-    // } else {
-    //   this.premountMethodCalls.set("addListener", callback);
-    // }
-  };
+  get thisSigninUri () {
+    return this.signinUri
+  }
+
 
   async authenticateBrowserParty(): Promise<
     HeadlessBrowserAuthdog | BrowserAuthdog | undefined
   > {
     if (this.mode !== "browser" || this.#loaded) {
       return;
+    } 
+
+    const environmentId = getParamFromUri(this.signinUri, "id");
+    const { Authorization } = getSessionCredentials({ environmentId });
+
+    if (Authorization) {
+      fetchUserInfos({
+        environmentId,
+        Authorization,
+        authnUri: this.authnApi,
+      }).then((user: any) => {
+        console.log(user);
+        // setIsFetching(false);
+      });
     }
 
-    console.log("authenticateBrowserParty");
+
+
+    // console.log("authenticateBrowserParty");
 
     // TODO: check if domain is Authdog dev domain
     // if so: extract token from URI

@@ -5,8 +5,8 @@ import React from "react";
 
 export * from "@authdog/authdog-react";
 
-const NO_FRONTEND_API_ERR =
-  "The NEXT_PUBLIC_AUTHDOG_FRONTEND_API environment variable must be set to use the AuthdogProvider component.";
+// const NO_FRONTEND_API_ERR =
+//   "The NEXT_PUBLIC_AUTHDOG_FRONTEND_API environment variable must be set to use the AuthdogProvider component.";
 
 type NextAuthdogProviderProps = {
   children: React.ReactNode;
@@ -22,7 +22,6 @@ export function AuthdogProvider({
     authnApi,
     __authdog_ssr_state,
     authServerSideProps,
-    // clerkJSUrl,
     ...restProps
   } = rest;
   const { push } = useRouter();
@@ -31,8 +30,6 @@ export function AuthdogProvider({
   // if (authnApi === undefined && !process.env.NEXT_PUBLIC_AUTHDOG_FRONTEND_API) {
   //   throw Error(NO_FRONTEND_API_ERR);
   // }
-
-  console.log(authnApi);
 
   ReactAuthdogProvider.displayName = "ReactAuthdogProvider";
 

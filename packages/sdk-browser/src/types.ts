@@ -3,12 +3,12 @@ export interface IFetchUser {
   originId?: TOriginId;
   Authorization: TAuthorization;
   verifySsl?: TVerifySsl;
-  platformUri?: TPlatformUri;
+  authnUri?: TPlatformUri;
 }
 
 export interface ILogoutUser {
   environmentId?: TEnvironmentId; // will be used in SSO context
-  platformUri?: TPlatformUri;
+  authnUri?: TPlatformUri;
   domain?: TDomain;
 }
 
@@ -19,10 +19,10 @@ export interface IUriParameters {
 
 export interface IInitSessionParameters {
   environmentId?: TEnvironmentId;
-  originId?: TOriginId;
+  origin?: TOriginId;
 }
 
-export type TEnvironmentId = string | undefined;
+export type TEnvironmentId = string | null;
 export type TOriginId = string | null;
 export type TDomain = string;
 export type TPlatformUri = string;
