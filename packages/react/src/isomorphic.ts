@@ -77,6 +77,8 @@ export class IsomorphicAuthdog {
       return;
     }
 
+    console.log("authenticateBrowserParty");
+
     // TODO: check if domain is Authdog dev domain
     // if so: extract token from URI
     // else: read cookies, extract token from Cookies

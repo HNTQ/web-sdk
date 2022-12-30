@@ -1,17 +1,14 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 
-import { useIsomorphicAuthdogContext } from "@authdog/authdog-react";
+// import { useIsomorphicAuthdogContext } from "@authdog/authdog-react";
 
 // TODO
 // @ts-ignore
-import { withServerSideAuth } from '@authdog/nextjs/api'
+// import { withServerSideAuth } from '@authdog/nextjs/api'
 
 export default function Home(props: any) {
-  const ctx = useIsomorphicAuthdogContext();
-
-  console.log(ctx);
-
+  // const ctx = useIsomorphicAuthdogContext();
   return (
     <div className={styles.container}>
       <Head>

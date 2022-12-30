@@ -1,8 +1,13 @@
 {
     "compilerOptions": {
+      "baseUrl": ".",
       "paths": {
-        "@authdog/types": ["packages/types"],
-        "@authdog/shared": ["packages/shared"]
+        "@authdog/nextjs": ["packages/nextjs"],
+        "@authdog/react": ["packages/react"],
+        "@authdog/sdk-browser": ["packages/sdk-browser"],
+        "@authdog/sdk-node": ["packages/sdk-node"],
+        "@authdog/shared": ["packages/shared"],
+        "@authdog/types": ["packages/types"]
       },
       "declaration": true,
       "declarationMap": false,

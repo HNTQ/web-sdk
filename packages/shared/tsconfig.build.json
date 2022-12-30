@@ -1,26 +1,8 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "paths": {
-      "@authdog/types": ["../types"]
-    },
-    "declaration": true,
-    "declarationMap": false,
-    "esModuleInterop": true,
-    "importHelpers": true,
-    "jsx": "react",
-    "lib": ["es6", "dom"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "outDir": "dist",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "sourceMap": false,
-    "strict": true,
-    "target": "ES2017"
+    "outDir": "dist"
   },
-  "include": ["src/index.ts", "src/**/*.d.ts"],
+  "include": ["src/index.ts", "src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"]
 }
