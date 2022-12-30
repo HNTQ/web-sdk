@@ -35,9 +35,12 @@
     "dev": {
       "cache": false
     },
+    "ssr": {
+      "cache": false
+    },
     "test": {
       "outputs": ["coverage/**"],
-      "cache": false
+      "cache": true
     }
   }
 }

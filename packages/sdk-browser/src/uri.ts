@@ -19,11 +19,10 @@ export const getParamFromUri = (uri: string, param: string) => {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
 
-
 // remove parameter from current location uri
 export const removeParamFromUri = (param: string) => {
   const uri = window.location.href;
   const url = new URL(uri);
   url.searchParams.delete(param);
   window.history.replaceState({}, document.title, url.toString());
-}
+};

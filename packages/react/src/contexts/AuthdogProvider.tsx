@@ -23,19 +23,18 @@ function AuthdogProviderBase({
   initialState,
   children,
   authnApi,
-  signinUri,
+  signinUri
 }: AuthdogProviderProps): JSX.Element {
-
   return (
-      <AuthdogContextProvider
-        initialState={initialState}
-        isomorphicAuthdogOptions={{
-          authnApi,
-          signinUri,
-        }}
-      >
-        {children}
-      </AuthdogContextProvider>
+    <AuthdogContextProvider
+      initialState={initialState}
+      isomorphicAuthdogOptions={{
+        authnApi,
+        signinUri
+      }}
+    >
+      {children}
+    </AuthdogContextProvider>
   );
 }
 

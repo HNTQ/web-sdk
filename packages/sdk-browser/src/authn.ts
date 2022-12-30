@@ -21,7 +21,7 @@ export const getSessionCredentials = ({
   environmentId,
   origin = location.host || location.hostname
 }: t.IInitSessionParameters) => {
-  const sessionFromUri = getParamFromUri(location.search, "token");
+  const sessionFromUri = getParamFromUri(location.search, c.TOKEN_URI_PARAM);
   const sessionFromSessionStorage = getParamFromSessionStorage(
     c.SDK_SESSION_ID
   );
@@ -33,14 +33,13 @@ export const getSessionCredentials = ({
     if (sessionFromCookies) {
       window.sessionStorage.setItem(c.SDK_SESSION_ID, sessionFromCookies);
     } else if (sessionFromUri) {
-      window.sessionStorage.setItem(c.SDK_SESSION_ID, sessionFromUri);
-      removeParamFromUri("token");
+      persistTokenFromUri();
     }
     if (environmentId) {
       window.sessionStorage.setItem(c.SDK_ENV_ID, environmentId);
     }
     if (!session && environmentId) {
-      console.error("unauthorized");
+      console.info("Authdog: no session found, you are not logged in.");
     }
   }
   const credentials = {
@@ -63,30 +62,40 @@ export const getSessionCredentials = ({
  * @param authnUri - Authdog Identity endpoint
  */
 export const fetchUserInfos = async ({
-    environmentId,
-    originId,
-    Authorization,
-    authnUri
-  }: t.IFetchUser) => {
-    if (!Authorization) {
-      console.error("Can't fetch user infos without Authorization");
-      return null;
+  environmentId,
+  originId,
+  Authorization,
+  authnUri
+}: t.IFetchUser) => {
+  if (!Authorization) {
+    console.error("Can't fetch user infos without Authorization");
+    return null;
+  }
+
+  return await gqlFetcher(
+    { endpoint: `${authnUri}/graphql`, query: q.APP_ENV_USER },
+    {
+      Authorization: `Bearer ${Authorization}`,
+      environmentId,
+      originId
     }
-  
-    return await gqlFetcher(
-      { endpoint: `${authnUri}/graphql`, query: q.APP_ENV_USER },
-      {
-        Authorization: `Bearer ${Authorization}`,
-        environmentId,
-        originId
-      }
-    )
-      .then(async (res: any) => {
-        return await res.json();
-      })
-      .catch((err) => {
-        throw new Error(err);
-      })
-      .then((json) => json?.data?.applicationEnvironmentUser?.user);
-  };
-  
+  )
+    .then(async (res: any) => {
+      return await res.json();
+    })
+    .catch((err) => {
+      throw new Error(err);
+    })
+    .then((json) => json?.data?.applicationEnvironmentUser?.user);
+};
+
+export const persistTokenFromUri = () => {
+  const sessionFromUri = getParamFromUri(location.search, c.TOKEN_URI_PARAM);
+  if (sessionFromUri) {
+    window.sessionStorage.setItem(c.SDK_SESSION_ID, sessionFromUri);
+    removeParamFromUri(c.TOKEN_URI_PARAM);
+  }
+};
+
+export const getSessionTokenFromStorage = () =>
+  getParamFromSessionStorage(c.SDK_SESSION_ID);

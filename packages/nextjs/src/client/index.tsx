@@ -18,12 +18,8 @@ export function AuthdogProvider({
   ...rest
 }: NextAuthdogProviderProps): JSX.Element {
   // Allow for overrides without making the type public
-  const {
-    authnApi,
-    __authdog_ssr_state,
-    authServerSideProps,
-    ...restProps
-  } = rest;
+  const { authnApi, __authdog_ssr_state, authServerSideProps, ...restProps } =
+    rest;
   const { push } = useRouter();
 
   // TODO

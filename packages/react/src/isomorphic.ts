@@ -1,6 +1,10 @@
 import { BrowserAuthdog, HeadlessBrowserAuthdog } from "./types";
 import { inClientSide } from "./utils";
-import {fetchUserInfos, getParamFromUri, getSessionCredentials} from '@authdog/sdk-browser';
+import {
+  fetchUserInfos,
+  getParamFromUri,
+  getSessionCredentials
+} from "@authdog/sdk-browser";
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
@@ -56,17 +60,16 @@ export class IsomorphicAuthdog {
     return this.authnApi;
   }
 
-  get thisSigninUri () {
-    return this.signinUri
+  get thisSigninUri() {
+    return this.signinUri;
   }
-
 
   async authenticateBrowserParty(): Promise<
     HeadlessBrowserAuthdog | BrowserAuthdog | undefined
   > {
     if (this.mode !== "browser" || this.#loaded) {
       return;
-    } 
+    }
 
     const environmentId = getParamFromUri(this.signinUri, "id");
     const { Authorization } = getSessionCredentials({ environmentId });
@@ -75,14 +78,12 @@ export class IsomorphicAuthdog {
       fetchUserInfos({
         environmentId,
         Authorization,
-        authnUri: this.authnApi,
+        authnUri: this.authnApi
       }).then((user: any) => {
         console.log(user);
         // setIsFetching(false);
       });
     }
-
-
 
     // console.log("authenticateBrowserParty");
 

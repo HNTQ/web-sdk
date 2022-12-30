@@ -37,21 +37,16 @@ export function AuthdogContextProvider(props: {
     return { value: state.user };
   }, [state.user]);
 
-
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
       <AuthContext.Provider value={authCtx}>
-        <UserContext.Provider value={userCtx}>
-          {children}
-        </UserContext.Provider>
+        <UserContext.Provider value={userCtx}>{children}</UserContext.Provider>
       </AuthContext.Provider>
     </IsomorphicAuthdogContext.Provider>
   );
 }
 
-const useLoadedIsomorphicAuthdog = (
-  options: NewIsomorphicAuthdogParams
-) => {
+const useLoadedIsomorphicAuthdog = (options: NewIsomorphicAuthdogParams) => {
   const [loaded, setLoaded] = React.useState(false);
   const isomorphicAuthdog = React.useMemo(
     () => IsomorphicAuthdog.getOrCreateInstance(options),

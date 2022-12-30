@@ -12,6 +12,7 @@
     "test": "turbo test --filter=@authdog/* --filter=!@playground/* --concurrency=${TURBO_CONCURRENCY:-2}",
     "dev": "turbo dev --filter=@authdog/*",
     "dev_next": "turbo dev --filter=@playground/nextjs",
+    "ssr_next": "turbo ssr --filter=@playground/nextjs",
     "dev_cra": "turbo dev --filter=@playground/cra",
     "dev_remix_node": "turbo dev --filter=@playground/remix-node",
     "lint": "turbo run lint",
