@@ -1,2 +1,2 @@
 pretty:
-	npx prettier --write packages
+	npx prettier --write packages playground

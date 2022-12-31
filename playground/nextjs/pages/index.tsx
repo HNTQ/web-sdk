@@ -1,12 +1,15 @@
-import {useEffect, useState} from "react"
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
-import {getSessionTokenFromStorage, persistTokenFromUri, logout} from "@authdog/sdk-browser"
+import {
+  getSessionTokenFromStorage,
+  persistTokenFromUri,
+  logout
+} from "@authdog/sdk-browser";
 
 export default function Home() {
-
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
@@ -14,8 +17,7 @@ export default function Home() {
     if (getSessionTokenFromStorage() !== null) {
       setAuthenticated(true);
     }
-  }, [])
-
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -29,20 +31,20 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://www.authdog.com">Authdog</a>
         </h1>
-        {authenticated
-           ? (
-            <span onClick={() => {
-              logout({})
-            }} style={{ cursor: 'pointer' }}>
-              Sign Out
-            </span>
-            )
-            : (
-              <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">Signin</a>
-            )
-        }
-
-
+        {authenticated ? (
+          <span
+            onClick={() => {
+              logout({});
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            Sign Out
+          </span>
+        ) : (
+          <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">
+            Signin
+          </a>
+        )}
       </main>
 
       <footer className={styles.footer}>
@@ -51,19 +53,18 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
 
-export async function getServerSideProps({req}: any) {
-  // console.log(getParamFromUri(req?.url, "token"))
+export async function getServerSideProps({ req }: any) {
   return {
-    props: {}, // will be passed to the page component as props
-  }
+    props: {} // will be passed to the page component as props
+  };
 }

@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { AuthdogProvider } from "@authdog/react";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const authnApi = "https://aws.us-east1.cdn.authdog.com";
+const signinUri =
+  "https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthdogProvider authnApi={authnApi} signinUri={signinUri}>
+      <App />
+    </AuthdogProvider>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
