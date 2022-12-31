@@ -1,31 +1,38 @@
+import {useState, useEffect} from "react";
+
+import {
+  getSessionTokenFromStorage,
+  persistTokenFromUri,
+  logout
+} from "@authdog/sdk-browser";
+
 export default function Index() {
+  const [authenticated, setAuthenticated] = useState(false);
+  useEffect(() => {
+    persistTokenFromUri();
+    if (getSessionTokenFromStorage() !== null) {
+      setAuthenticated(true);
+    }
+  }, []);
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
       <h1>Welcome to Remix</h1>
       <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
+        {authenticated ? (
+          <span
+            onClick={() => {
+              logout({});
+            }}
+            style={{ cursor: "pointer" }}
           >
-            15m Quickstart Blog Tutorial
+            Sign Out
+          </span>
+        ) : (
+          <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">
+            Signin
           </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
+        )}
       </ul>
     </div>
   );
