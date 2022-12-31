@@ -16,6 +16,7 @@
     "dev_cra": "turbo dev --filter=@playground/cra",
     "dev_remix_node": "turbo dev --filter=@playground/remix-node",
     "dev_remix_cf_workers": "turbo dev --filter=@playground/remix-cf-workers",
+    "dev_remix_cf_pages": "turbo dev --filter=@playground/remix-cf-pages",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

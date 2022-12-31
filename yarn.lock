@@ -1152,7 +1152,7 @@
   dependencies:
     "mime" "^3.0.0"
 
-"@cloudflare/workers-types@^2.0.0 || ^3.0.0", "@cloudflare/workers-types@^3.18.0":
+"@cloudflare/workers-types@^2.0.0 || ^3.0.0", "@cloudflare/workers-types@^3.0.0", "@cloudflare/workers-types@^3.18.0":
   "integrity" "sha512-ehKOJVLMeR+tZkYhWEaLYQxl0TaIZu/kE86HF3/RidR8Xv5LuQxpbh+XXAoKVqsaphWLhIgBhgnlN5HGdheXSQ=="
   "resolved" "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-3.18.0.tgz"
   "version" "3.18.0"
@@ -2271,6 +2271,13 @@
     "loader-utils" "^2.0.4"
     "schema-utils" "^3.0.0"
     "source-map" "^0.7.3"
+
+"@remix-run/cloudflare-pages@^1.9.0":
+  "integrity" "sha512-4x7Z4sedjNfX9qBR106P5lvU6FwWxNEWRjm3uv0XFiQRoDQWnTvVhqPnt3PmmNzB09TOjC7GGyvulPZi1ih19w=="
+  "resolved" "https://registry.npmjs.org/@remix-run/cloudflare-pages/-/cloudflare-pages-1.9.0.tgz"
+  "version" "1.9.0"
+  dependencies:
+    "@remix-run/cloudflare" "1.9.0"
 
 "@remix-run/cloudflare-workers@^1.9.0":
   "integrity" "sha512-KDUU5vvWxEoxOoYmeuTbHUcCuTdHPXfMSnvhvXBNETsQBJ1KH1K2v1eS1gWwtf/Jqslmx3LGq+d1SfZxweev8Q=="
@@ -12390,11 +12397,11 @@
     "mdast-util-to-hast" "^11.0.0"
     "unified" "^10.0.0"
 
-"remix-cf-workers@file:/home/david/dev/authdog/web-sdk/playground/remix-cf-workers":
-  "resolved" "file:playground/remix-cf-workers"
+"remix-cf-pages@file:/home/david/dev/authdog/web-sdk/playground/remix-cf-pages":
+  "resolved" "file:playground/remix-cf-pages"
   dependencies:
     "@remix-run/cloudflare" "^1.9.0"
-    "@remix-run/cloudflare-workers" "^1.9.0"
+    "@remix-run/cloudflare-pages" "^1.9.0"
     "@remix-run/react" "^1.9.0"
     "cross-env" "^7.0.3"
     "react" "^18.2.0"

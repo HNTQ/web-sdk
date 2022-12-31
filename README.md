@@ -10,3 +10,4 @@
 - [create-react-app](playground/cra)
 - [remix-node](playground/remix-node)
 - [remix-cloudflare-workers](playground/remix-cf-workers)
+- [remix-cloudflare-pages](playground/remix-cf-pages)
