@@ -1,13 +1,10 @@
-# Authdog Web SDK
+# Authdog web SDK
 
 [![.github/workflows/adog-js-ci.yml](https://github.com/authdog/web-oss/actions/workflows/adog-js-ci.yml/badge.svg)](https://github.com/authdog/web-oss/actions/workflows/adog-js-ci.yml)
 
-> This repository contains all Open Source packages to integrate seemlesly Authdog services into your project
+> This repository contains all Open Source packages to authenticate your users with Authdog in your project(s).
 
 # Sample projects
 
-- [withNextCSR](playground/next13)
+- [withNextJs](playground/nextjs)
 - [withCRA](playground/cra)
-- [withNextSSR](/) - WIP
-- [withRemixCfPages](/) - WIP
-- [withRemixCfWorkers](/) - WIP
