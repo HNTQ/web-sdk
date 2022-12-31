@@ -6,5 +6,6 @@
 
 # Sample projects
 
-- [withNextJs](playground/nextjs)
-- [withCRA](playground/cra)
+- [nextjs](playground/nextjs)
+- [create-react-app](playground/cra)
+- [remix-node](playground/cra)
