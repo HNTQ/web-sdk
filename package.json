@@ -15,6 +15,7 @@
     "ssr_next": "turbo ssr --filter=@playground/nextjs",
     "dev_cra": "turbo dev --filter=@playground/cra",
     "dev_remix_node": "turbo dev --filter=@playground/remix-node",
+    "dev_remix_cf_workers": "turbo dev --filter=@playground/remix-cf-workers",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
