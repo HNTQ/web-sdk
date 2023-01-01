@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthContext";
 import { AuthdogIsomorphicOptions } from "./AuthdogProvider";
 
 import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
-import { UserContext } from "./UserContext";
+import { UserContextProvider } from "./user/UserContext";
 
 type AuthdogContextProvider = {
   children: React.ReactNode;
@@ -33,14 +33,10 @@ export function AuthdogContextProvider(props: {
     [state.user]
   );
 
-  const userCtx = React.useMemo(() => {
-    return { value: state.user };
-  }, [state.user]);
-
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
       <AuthContext.Provider value={authCtx}>
-        <UserContext.Provider value={userCtx}>{children}</UserContext.Provider>
+        <UserContextProvider>{children}</UserContextProvider>
       </AuthContext.Provider>
     </IsomorphicAuthdogContext.Provider>
   );

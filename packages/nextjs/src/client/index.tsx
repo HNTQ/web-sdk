@@ -1,5 +1,4 @@
 import { AuthdogProvider as ReactAuthdogProvider } from "@authdog/authdog-react";
-// import { IsomorphicClerkOptions } from '@authdog/authdog-react/dist/types';
 import { useRouter } from "next/router";
 import React from "react";
 

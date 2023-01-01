@@ -1,6 +1,6 @@
 export { AuthdogInstance } from "./authdog";
 export { ClientResource } from "./client";
-export { AuthdogResource, AuthdogResourceReloadParams } from "./resource";
+export { AuthdogResource } from "./resource";
 export {
   CamelToSnake,
   DeepCamelToSnake,
