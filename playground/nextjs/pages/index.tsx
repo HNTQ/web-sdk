@@ -9,7 +9,7 @@ import {
   logout
 } from "@authdog/browser";
 
-import { useUser } from "@authdog/react";
+import { useIdentity } from "@authdog/react";
 
 export default function Home() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,7 +21,7 @@ export default function Home() {
     }
   }, []);
 
-  const { ["state"]: userState } = useUser();
+  const { user } = useIdentity();
 
   return (
     <div className={styles.container}>
@@ -37,7 +37,7 @@ export default function Home() {
         </h1>
         {authenticated ? (
           <>
-            {userState.user ? <h2>Hi {userState.user?.displayName}</h2> : <h3>Loading...</h3>}
+            {user ? <h2>Hi {user?.displayName}</h2> : <h3>Loading...</h3>}
 
             <span
               onClick={() => {

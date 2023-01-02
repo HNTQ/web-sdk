@@ -19,9 +19,7 @@ export const AuthdogContextProvider = (props: {
   );
   const userCtx = React.useMemo(
     () => ({
-      state: {
-        user: isomorphicAuthdog.currentUser
-      }
+      user: isomorphicAuthdog.currentUser
     }),
     [loaded]
   );

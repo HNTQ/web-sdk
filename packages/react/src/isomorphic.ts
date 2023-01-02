@@ -6,12 +6,6 @@ import {
   getSessionCredentials
 } from "@authdog/browser";
 
-// import {
-//   useUserContext,
-//   c as userContextConstants,
-//   UserContextProvider
-// } from './contexts/user/UserContext'
-
 import { UserResource } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
@@ -86,7 +80,6 @@ export class IsomorphicAuthdog {
 
     const environmentId = getParamFromUri(this.signinUri, "id");
     const { Authorization } = getSessionCredentials({ environmentId });
-    // const {["dispatch"]: dispatchUser} = useUserContext();
 
     if (Authorization) {
       fetchUserInfos({

@@ -21,7 +21,7 @@
     "@authdog/react#build": {
       "dependsOn": ["^build", "@authdog/browser#build"],
       "outputs": ["dist/**", "build/**"],
-      "cache": false
+      "cache": true
     },
     "@authdog/nextjs#build": {
       "dependsOn": ["^build", "@authdog/react#build"],

@@ -9,10 +9,6 @@ export interface IUserUserContextState {
   user: UserResource | null;
 }
 
-export interface IUseUserContext {
-  state: IUserUserContextState;
-}
-
 export interface IContextUserAction {
   type: string;
   payload: any;

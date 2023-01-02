@@ -6,11 +6,11 @@ const INITIAL_VALUES: t.IUserUserContextState = {
   user: null
 };
 
-const UserContext = React.createContext<t.IUseUserContext>({
-  state: { ...INITIAL_VALUES }
+const UserContext = React.createContext<t.IUserUserContextState>({
+  user: INITIAL_VALUES.user
 });
 
-const useUser = () => {
+const useIdentity = () => {
   const context = React.useContext(UserContext);
   if (context === undefined) {
     throw new Error(e.missingContextParentError);
@@ -18,4 +18,4 @@ const useUser = () => {
   return context;
 };
 
-export { UserContext, useUser };
+export { UserContext, useIdentity };
