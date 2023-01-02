@@ -1,5 +1,5 @@
 {
-  "name": "@authdog/sdk-browser",
+  "name": "@authdog/browser",
   "version": "1.0.0",
   "source": "src/index.ts",
   "main": "dist/index.js",

@@ -14,10 +14,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
-      "@authdog/authdog-react": ["../../packages/react"],
+      "@authdog/react": ["../../packages/react"],
       "@authdog/nextjs": ["../../packages/nextjs"],
       "@authdog/nextjs/api": ["../../packages/nextjs/api"],
-      "@authdog/sdk-browser": ["../../packages/sdk-browser"]
+      "@authdog/browser": ["../../packages/browser"]
     },
     // Remix takes care of building everything in `remix build`.
     "noEmit": true

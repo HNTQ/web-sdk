@@ -7,7 +7,9 @@ import {
   getSessionTokenFromStorage,
   persistTokenFromUri,
   logout
-} from "@authdog/sdk-browser";
+} from "@authdog/browser";
+
+import { useUser } from "@authdog/react";
 
 export default function Home() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,6 +20,8 @@ export default function Home() {
       setAuthenticated(true);
     }
   }, []);
+
+  const { ["state"]: userState } = useUser();
 
   return (
     <div className={styles.container}>
@@ -32,14 +36,18 @@ export default function Home() {
           Welcome to <a href="https://www.authdog.com">Authdog</a>
         </h1>
         {authenticated ? (
-          <span
-            onClick={() => {
-              logout({});
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            Sign Out
-          </span>
+          <>
+            {userState.user ? <h2>Hi {userState.user?.displayName}</h2> : <h3>Loading...</h3>}
+
+            <span
+              onClick={() => {
+                logout();
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              Sign Out
+            </span>
+          </>
         ) : (
           <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">
             Signin

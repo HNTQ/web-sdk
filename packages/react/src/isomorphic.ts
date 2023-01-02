@@ -4,7 +4,15 @@ import {
   fetchUserInfos,
   getParamFromUri,
   getSessionCredentials
-} from "@authdog/sdk-browser";
+} from "@authdog/browser";
+
+// import {
+//   useUserContext,
+//   c as userContextConstants,
+//   UserContextProvider
+// } from './contexts/user/UserContext'
+
+import { UserResource } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
@@ -15,11 +23,11 @@ export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
   private signinUri: string;
-
   static #instance: IsomorphicAuthdog;
+  private loadedListeners: Array<() => void> = [];
 
   #loaded = false;
-  user: any;
+  currentUser: UserResource | null = null;
 
   get loaded(): boolean {
     return this.#loaded;
@@ -48,8 +56,13 @@ export class IsomorphicAuthdog {
   value?: any;
 
   // TODO: check if useful
-  public addOnLoaded = (_: () => void) => {
-    // this.loadedListeners.push(cb);
+  public addOnLoaded = (cb: () => void) => {
+    this.loadedListeners.push(cb);
+  };
+
+  public emitLoaded = () => {
+    this.loadedListeners.forEach((cb) => cb());
+    this.loadedListeners = [];
   };
 
   get thisMode() {
@@ -73,6 +86,7 @@ export class IsomorphicAuthdog {
 
     const environmentId = getParamFromUri(this.signinUri, "id");
     const { Authorization } = getSessionCredentials({ environmentId });
+    // const {["dispatch"]: dispatchUser} = useUserContext();
 
     if (Authorization) {
       fetchUserInfos({
@@ -80,17 +94,10 @@ export class IsomorphicAuthdog {
         Authorization,
         authnUri: this.authnApi
       }).then((user: any) => {
-        console.log(user);
-        // setIsFetching(false);
+        this.currentUser = user;
+        this.hydrateAuthdogJs();
       });
     }
-
-    // console.log("authenticateBrowserParty");
-
-    // TODO: check if domain is Authdog dev domain
-    // if so: extract token from URI
-    // else: read cookies, extract token from Cookies
-
     this.#loaded = true;
     return;
   }
@@ -106,4 +113,16 @@ export class IsomorphicAuthdog {
       throw new Error(errorMsg);
     }
   }
+
+  private hydrateAuthdogJs = async () => {
+    // if (!clerkjs) {
+    //   throw new Error('Failed to hydrate latest Clerk JS');
+    // }
+
+    // this.clerkjs = clerkjs;
+
+    this.#loaded = true;
+    this.emitLoaded();
+    return;
+  };
 }

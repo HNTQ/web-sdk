@@ -14,8 +14,8 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./app/*"],
-      "@authdog/authdog-react": ["../../packages/react"],
-      "@authdog/sdk-browser": ["../../packages/sdk-browser"]
+      "@authdog/react": ["../../packages/react"],
+      "@authdog/browser": ["../../packages/browser"]
     },
 
     // Remix takes care of building everything in `remix build`.

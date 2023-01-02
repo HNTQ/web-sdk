@@ -1,10 +1,10 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 import {
   getSessionTokenFromStorage,
   persistTokenFromUri,
   logout
-} from "@authdog/sdk-browser";
+} from "@authdog/browser";
 
 export default function Index() {
   const [authenticated, setAuthenticated] = useState(false);

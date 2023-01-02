@@ -17,8 +17,22 @@ function App() {
   }, []);
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: '100vh' }}>
-      <div className="App" style={{ textAlign: "center", border: "1px solid black", width: '30vw' }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh"
+      }}
+    >
+      <div
+        className="App"
+        style={{
+          textAlign: "center",
+          border: "1px solid black",
+          width: "30vw"
+        }}
+      >
         <h1>Welcome to Authdog!</h1>
         <h3>Create React App sample</h3>
 
@@ -38,7 +52,6 @@ function App() {
         )}
       </div>
     </div>
-    
   );
 }
 

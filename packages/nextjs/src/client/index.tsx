@@ -1,8 +1,8 @@
-import { AuthdogProvider as ReactAuthdogProvider } from "@authdog/authdog-react";
+import { AuthdogProvider as ReactAuthdogProvider } from "@authdog/react";
 import { useRouter } from "next/router";
 import React from "react";
 
-export * from "@authdog/authdog-react";
+export * from "@authdog/react";
 
 // const NO_FRONTEND_API_ERR =
 //   "The NEXT_PUBLIC_AUTHDOG_FRONTEND_API environment variable must be set to use the AuthdogProvider component.";

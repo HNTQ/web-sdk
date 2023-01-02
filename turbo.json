@@ -14,16 +14,17 @@
       "dependsOn": ["^build", "@authdog/types#build"],
       "outputs": ["dist/**", "build/**"]
     },
-    "@authdog/sdk-browser#build": {
+    "@authdog/browser#build": {
       "dependsOn": ["^build", "@authdog/shared#build"],
       "outputs": ["dist/**", "build/**"]
     },
-    "@authdog/authdog-react#build": {
-      "dependsOn": ["^build", "@authdog/sdk-browser#build"],
-      "outputs": ["dist/**", "build/**"]
+    "@authdog/react#build": {
+      "dependsOn": ["^build", "@authdog/browser#build"],
+      "outputs": ["dist/**", "build/**"],
+      "cache": false
     },
     "@authdog/nextjs#build": {
-      "dependsOn": ["^build", "@authdog/authdog-react#build"],
+      "dependsOn": ["^build", "@authdog/react#build"],
       "outputs": ["dist/**", "build/**"]
     },
     "@playground/nextjs": {

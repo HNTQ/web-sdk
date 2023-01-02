@@ -1,5 +1,4 @@
 import React from "react";
-
 const counts = new Map<string, number>();
 
 export function useMaxAllowedInstancesGuard(

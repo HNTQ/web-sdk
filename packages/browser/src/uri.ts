@@ -3,7 +3,7 @@
  * For example: https://authdog.dev?param=value will return "value" for param "param".
  *
  * @remarks
- * This method is part of the \@authdog/sdk-browser.
+ * This method is part of the \@authdog/browser.
  *
  * @param uri raw uri to be parsed
  * @param param parameter to be extracted from uri

@@ -2,7 +2,7 @@ import {
   getSessionTokenFromStorage,
   persistTokenFromUri,
   logout
-} from "@authdog/sdk-browser";
+} from "@authdog/browser";
 import { useEffect, useState } from "react";
 
 export default function Index() {
@@ -19,7 +19,7 @@ export default function Index() {
       <h1>Welcome to Remix</h1>
       <h3>for Cloudflare Workers</h3>
       <ul>
-      {authenticated ? (
+        {authenticated ? (
           <span
             onClick={() => {
               logout({});

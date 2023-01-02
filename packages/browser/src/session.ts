@@ -42,7 +42,7 @@ export const clearSession = (domain?: string) => {
  * @param domain - cookie domain used for session (e.g.: .acme.org)
  *
  */
-export const logout = async ({ domain }: t.ILogoutUser) => {
+export const logout = async ({ domain }: t.ILogoutUser = {}) => {
   void clearSession(domain);
   // return await httpClient(`${tenantUri}/api/v1/oauth2/logout`,
   location.reload(); // TODO get logout uri

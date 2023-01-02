@@ -4,7 +4,7 @@ import * as c from "./constants";
  * Returns session cookie by name if it exists in the cookies store
  *
  * @remarks
- * This method is part of the \@authdog/sdk-browser.
+ * This method is part of the \@authdog/browser.
  *
  * @param name - cookie identifier in the cookie store
  *
@@ -19,7 +19,7 @@ export const getSessionCookie = (name: string) => {
  * Reset cookie store for the domain
  *
  * @remarks
- * This method is part of the \@authdog/sdk-browser.
+ * This method is part of the \@authdog/browser.
  *
  * @param domain - cookie domain used for session (e.g.: .acme.org)
  *
