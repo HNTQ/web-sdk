@@ -2,7 +2,8 @@ import React from "react";
 import { IsomorphicAuthdog, NewIsomorphicAuthdogParams } from "../isomorphic";
 import { AuthdogIsomorphicOptions } from "./AuthdogProvider";
 import { IsomorphicAuthdogContext } from "./IsomorphicAuthdogContext";
-import { UserContext } from "./user/UserContext";
+import { UserContext } from "./user/context";
+import { SigninContext } from "./signin/context";
 
 export const AuthdogContextProvider = (props: {
   children: React.ReactNode;
@@ -24,9 +25,22 @@ export const AuthdogContextProvider = (props: {
     [loaded]
   );
 
+  const signinCtx = React.useMemo(
+    () => ({
+      signinUri: isomorphicAuthdog.signinUri
+    }),
+    [loaded]
+  );
+
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
-      <UserContext.Provider value={userCtx}>{children}</UserContext.Provider>
+      <UserContext.Provider value={userCtx}>
+        <SigninContext.Provider
+          value={signinCtx}
+        >
+          {children}
+        </SigninContext.Provider>
+      </UserContext.Provider>
     </IsomorphicAuthdogContext.Provider>
   );
 };

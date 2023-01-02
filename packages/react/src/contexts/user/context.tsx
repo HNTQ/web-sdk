@@ -2,11 +2,11 @@ import * as React from "react";
 import * as t from "./types";
 import * as e from "./errors";
 
-const INITIAL_VALUES: t.IUserUserContextState = {
+const INITIAL_VALUES: t.IUserContextState = {
   user: null
 };
 
-const UserContext = React.createContext<t.IUserUserContextState>({
+const UserContext = React.createContext<t.IUserContextState>({
   user: INITIAL_VALUES.user
 });
 

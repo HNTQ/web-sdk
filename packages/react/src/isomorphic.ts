@@ -16,12 +16,12 @@ export type NewIsomorphicAuthdogParams = {
 export class IsomorphicAuthdog {
   private mode: "browser" | "server";
   private authnApi: string;
-  private signinUri: string;
   static #instance: IsomorphicAuthdog;
   private loadedListeners: Array<() => void> = [];
 
   #loaded = false;
   currentUser: UserResource | null = null;
+  signinUri: string;
 
   get loaded(): boolean {
     return this.#loaded;

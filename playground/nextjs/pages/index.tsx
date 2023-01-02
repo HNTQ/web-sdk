@@ -9,7 +9,7 @@ import {
   logout
 } from "@authdog/browser";
 
-import { useIdentity } from "@authdog/react";
+import { useIdentity, useSignin } from "@authdog/react";
 
 export default function Home() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -22,6 +22,8 @@ export default function Home() {
   }, []);
 
   const { user } = useIdentity();
+  const { signinUri } = useSignin();
+
 
   return (
     <div className={styles.container}>
@@ -49,7 +51,7 @@ export default function Home() {
             </span>
           </>
         ) : (
-          <a href="https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996">
+          <a href={String(signinUri)}>
             Signin
           </a>
         )}
