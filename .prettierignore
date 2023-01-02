@@ -2,4 +2,4 @@ dist
 .next
 # remix
 build
-./playground/remix-cf-pages/functions
+playground/remix-cf-pages/functions/\[\[path\]\].js

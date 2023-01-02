@@ -35,9 +35,7 @@ export const AuthdogContextProvider = (props: {
   return (
     <IsomorphicAuthdogContext.Provider value={authdogCtx}>
       <UserContext.Provider value={userCtx}>
-        <SigninContext.Provider
-          value={signinCtx}
-        >
+        <SigninContext.Provider value={signinCtx}>
           {children}
         </SigninContext.Provider>
       </UserContext.Provider>

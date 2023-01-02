@@ -24,7 +24,6 @@ export default function Home() {
   const { user } = useIdentity();
   const { signinUri } = useSignin();
 
-
   return (
     <div className={styles.container}>
       <Head>
@@ -51,9 +50,7 @@ export default function Home() {
             </span>
           </>
         ) : (
-          <a href={String(signinUri)}>
-            Signin
-          </a>
+          <a href={String(signinUri)}>Signin</a>
         )}
 
         <hr />
@@ -62,10 +59,7 @@ export default function Home() {
           <h2>Hi {user?.displayName}</h2>
         </SignedIn>
 
-        <SignedOut>
-          You are not logged in.
-        </SignedOut>
-
+        <SignedOut>You are not logged in.</SignedOut>
       </main>
 
       <footer className={styles.footer}>
