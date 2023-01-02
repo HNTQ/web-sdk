@@ -45,6 +45,9 @@
     "test": {
       "outputs": ["coverage/**"],
       "cache": true
+    },
+    "storybook": {
+      "cache": false
     }
   }
 }

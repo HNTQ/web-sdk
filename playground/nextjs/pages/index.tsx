@@ -9,7 +9,7 @@ import {
   logout
 } from "@authdog/browser";
 
-import { useIdentity, useSignin } from "@authdog/react";
+import { useIdentity, useSignin, SignedIn, SignedOut } from "@authdog/react";
 
 export default function Home() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -55,6 +55,17 @@ export default function Home() {
             Signin
           </a>
         )}
+
+        <hr />
+
+        <SignedIn>
+          <h2>Hi {user?.displayName}</h2>
+        </SignedIn>
+
+        <SignedOut>
+          You are not logged in.
+        </SignedOut>
+
       </main>
 
       <footer className={styles.footer}>

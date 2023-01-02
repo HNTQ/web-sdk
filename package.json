@@ -31,6 +31,7 @@
     "prettier": "latest",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
+    "tsconfig-paths-webpack-plugin": "^4.0.0",
     "turbo": "latest",
     "typescript": "^4.9.4"
   },
@@ -38,5 +39,17 @@
     "node": ">=14.0.0"
   },
   "dependencies": {},
-  "packageManager": "yarn@1.22.18"
+  "packageManager": "yarn@1.22.18",
+  "eslintConfig": {
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
+    ]
+  }
 }
