@@ -18,11 +18,11 @@ export const meta: MetaFunction = () => ({
 
 export default function App() {
   const authnApi = "https://aws.us-east1.cdn.authdog.com";
-  const signinUri =
+  const webLoginUri =
     "https://weblogin.authdog.com?id=a0b7f44c-87a2-4ea6-bc7e-76cf2a019996";
 
   return (
-    <AuthdogProvider authnApi={authnApi} signinUri={signinUri}>
+    <AuthdogProvider authnApi={authnApi} webLoginUri={webLoginUri}>
       <html lang="en">
         <head>
           <Meta />

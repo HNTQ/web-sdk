@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
 
   const { user } = useIdentity();
-  const { signinUri } = useSignin();
+  const { webLoginUri } = useSignin();
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ export default function Home() {
             </span>
           </>
         ) : (
-          <a href={String(signinUri)}>Signin</a>
+          <a href={String(webLoginUri)}>Signin</a>
         )}
 
         <hr />

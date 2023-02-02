@@ -27,7 +27,7 @@ export const AuthdogContextProvider = (props: {
 
   const signinCtx = React.useMemo(
     () => ({
-      signinUri: isomorphicAuthdog.signinUri
+      webLoginUri: isomorphicAuthdog.webLoginUri
     }),
     [loaded]
   );

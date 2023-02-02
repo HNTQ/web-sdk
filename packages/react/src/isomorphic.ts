@@ -10,7 +10,7 @@ import { UserResource } from "@authdog/types";
 
 export type NewIsomorphicAuthdogParams = {
   authnApi: string;
-  signinUri: string;
+  webLoginUri: string;
 };
 
 export class IsomorphicAuthdog {
@@ -21,7 +21,7 @@ export class IsomorphicAuthdog {
 
   #loaded = false;
   currentUser: UserResource | null = null;
-  signinUri: string;
+  webLoginUri: string;
 
   get loaded(): boolean {
     return this.#loaded;
@@ -34,9 +34,9 @@ export class IsomorphicAuthdog {
     return this.#instance;
   }
 
-  constructor({ authnApi, signinUri }: NewIsomorphicAuthdogParams) {
+  constructor({ authnApi, webLoginUri }: NewIsomorphicAuthdogParams) {
     this.authnApi = authnApi;
-    this.signinUri = signinUri;
+    this.webLoginUri = webLoginUri;
 
     this.mode = inClientSide() ? "browser" : "server";
 
@@ -67,8 +67,8 @@ export class IsomorphicAuthdog {
     return this.authnApi;
   }
 
-  get thisSigninUri() {
-    return this.signinUri;
+  get thiswebLoginUri() {
+    return this.webLoginUri;
   }
 
   async authenticateBrowserParty(): Promise<
@@ -78,7 +78,7 @@ export class IsomorphicAuthdog {
       return;
     }
 
-    const environmentId = getParamFromUri(this.signinUri, "id");
+    const environmentId = getParamFromUri(this.webLoginUri, "id");
     const { Authorization } = getSessionCredentials({ environmentId });
 
     if (Authorization) {

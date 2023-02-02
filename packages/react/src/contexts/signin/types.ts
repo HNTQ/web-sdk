@@ -4,10 +4,5 @@ export interface IContextProviderProps {
 }
 
 export interface ISigninContextState {
-  signinUri: string | null;
-}
-
-export interface IContextUserAction {
-  type: string;
-  payload: any;
+  webLoginUri: string | null;
 }

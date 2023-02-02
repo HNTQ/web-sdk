@@ -3,11 +3,11 @@ import * as t from "./types";
 import * as e from "./errors";
 
 const INITIAL_VALUES: t.ISigninContextState = {
-  signinUri: null
+  webLoginUri: null
 };
 
 const SigninContext = React.createContext<t.ISigninContextState>({
-  signinUri: INITIAL_VALUES.signinUri
+  webLoginUri: INITIAL_VALUES.webLoginUri
 });
 
 const useSignin = () => {

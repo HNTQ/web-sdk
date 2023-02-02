@@ -10,27 +10,27 @@ type InitialState = any;
 export interface AuthdogProviderProps extends IsomorphicAuthdogOptions {
   children: React.ReactNode;
   authnApi: string;
-  signinUri: string;
+  webLoginUri: string;
   initialState?: InitialState;
 }
 
 export interface AuthdogIsomorphicOptions extends IsomorphicAuthdogOptions {
   authnApi: string;
-  signinUri: string;
+  webLoginUri: string;
 }
 
 function AuthdogProviderBase({
   initialState,
   children,
   authnApi,
-  signinUri
+  webLoginUri
 }: AuthdogProviderProps): JSX.Element {
   return (
     <AuthdogContextProvider
       initialState={initialState}
       isomorphicAuthdogOptions={{
         authnApi,
-        signinUri
+        webLoginUri
       }}
     >
       {children}
