@@ -7,5 +7,6 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json"
-  }
+  },
+  "gitHead": "ff7b810007761730f602ae85a1fe8612c4d5d3bf"
 }
