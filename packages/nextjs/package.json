@@ -1,6 +1,6 @@
 {
   "name": "@authdog/nextjs",
-  "version": "0.0.2",
+  "version": "0.0.3-alpha.0+d721df9",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "license": "MIT",
@@ -13,5 +13,5 @@
     "@types/react": "^18.0.26",
     "react": "^18.2.0"
   },
-  "gitHead": "ff7b810007761730f602ae85a1fe8612c4d5d3bf"
+  "gitHead": "d721df9e77eca244dae108ddef7a5dd1a87a6c0d"
 }
