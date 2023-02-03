@@ -19,7 +19,8 @@
     "dev_remix_cf_pages": "turbo dev --filter=@playground/remix-cf-pages",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish_libs": "lerna publish --canary --force-publish"
+    "publish_libs": "lerna publish --canary --force-publish",
+    "set_npm_access": "npm config set access public"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.18.6",
