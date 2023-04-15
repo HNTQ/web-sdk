@@ -108,12 +108,6 @@ export class IsomorphicAuthdog {
   }
 
   private hydrateAuthdogJs = async () => {
-    // if (!clerkjs) {
-    //   throw new Error('Failed to hydrate latest Clerk JS');
-    // }
-
-    // this.clerkjs = clerkjs;
-
     this.#loaded = true;
     this.emitLoaded();
     return;

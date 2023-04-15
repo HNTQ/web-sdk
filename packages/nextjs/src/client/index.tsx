@@ -31,7 +31,6 @@ export function AuthdogProvider({
   return (
     <ReactAuthdogProvider
       authnApi={authnApi || process.env.NEXT_PUBLIC_CLERK_FRONTEND_API}
-      // clerkJSUrl={clerkJSUrl || process.env.NEXT_PUBLIC_CLERK_JS}
       navigate={(to: string) => push(to)}
       // withServerSideAuth automatically injects __clerk_ssr_state
       // getAuth returns a user-facing authServerSideProps that hides __clerk_ssr_state
